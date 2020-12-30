@@ -20,3 +20,15 @@ Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
+//画像投稿
+Route::get('/form', 
+	[App\Http\Controllers\UploadImageController::class, "show"]
+	)->name("upload_form");
+
+Route::post('/upload', 
+	[App\Http\Controllers\UploadImageController::class, "upload"]
+	)->name("upload_image");
+	
+Route::get('/list', 
+	[App\Http\Controllers\ImageListController::class, "show"]
+	)->name("image_list");

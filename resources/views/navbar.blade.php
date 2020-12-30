@@ -13,8 +13,15 @@
                 @if (Auth::check())
                     {{-- ユーザ一覧ページへのリンク --}}
                     <li class="nav-item"><a href="#" class="nav-link">Users</a></li>
-                    {{-- ユーザ一覧ページへのリンク --}}
-                    <li class="nav-item"><a href="#" class="nav-link">画像投稿</a></li>
+                    {{-- 画像投稿へのリンク --}}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('upload_form') }}"><i class="fas fa-arrow-alt-circle-down mr-1"></i>画像投稿</a>
+                    </li>
+                    {{-- 画像一覧ページへのリンク --}}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('image_list') }}"><i class="fas fa-user-plus mr-1"></i>画像確認</a>
+                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right">
