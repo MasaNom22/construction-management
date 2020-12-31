@@ -30,13 +30,15 @@ Route::get('/form',
 Route::post('/upload', 
 	[App\Http\Controllers\UploadImageController::class, "upload"]
 	)->name("upload_image");
-
+//画像削除
 Route::delete('/list/{id}', 'ImageListController@destroy')->name("delete_image");	
 	
 Route::get('/list', 
 	[App\Http\Controllers\ImageListController::class, "show"]
 	)->name("image_list");
 Auth::routes();
+//タスク
+Route::resource('/tasks', 'TasksController');
 //カレンダー
 Route::get('/', 'CalendarController@show');
 
