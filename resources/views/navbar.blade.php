@@ -23,7 +23,7 @@
                     </li>
                     {{-- ログアウトへのリンク --}}
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout.get') }}">ログアウト</li>
+                    <a class="nav-link" href="{{ route('logout.get') }}">ログアウト</a>
                     </li>
                     
                 @else
