@@ -14,10 +14,12 @@ class UploadImageController extends Controller
 
 	function upload(Request $request){
 		$request->validate([
-			'image' => 'required|file|image|mimes:png,jpeg'
+			'image' => 'required|file|image|mimes:png,jpeg',
+			'title' => 'required'
 		]);
 		$upload_image = $request->file('image');
-	
+		$title = $request->input('title');
+
 		if($upload_image) {
 			//アップロードされた画像を保存する
 			$path = $upload_image->store('uploads',"public");
@@ -25,6 +27,7 @@ class UploadImageController extends Controller
 			if($path){
 				UploadImage::create([
 					"file_name" => $upload_image->getClientOriginalName(),
+					"title" => $title,
 					"file_path" => $path
 				]);
 			}

@@ -15,6 +15,7 @@ class CreateUploadImagesTable extends Migration
     {
         Schema::create('upload_images', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
             $table->string("file_name");
 			$table->string("file_path");
             $table->timestamps();
