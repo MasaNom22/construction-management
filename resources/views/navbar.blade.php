@@ -1,5 +1,5 @@
 <header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark blue-gradient">
+    <nav class="navbar navbar-expand-sm navbar-dark aqua-gradient">
         {{-- トップページへのリンク --}}
         <a class="navbar-brand" href="/"><i class="fas fa-archway mr-1"></i>Construction-management</a>
 
@@ -21,18 +21,14 @@
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('image_list') }}"><i class="fas fa-user-plus mr-1"></i>画像確認</a>
                     </li>
-                    
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            {{-- ユーザ詳細ページへのリンク --}}
-                            <li class="dropdown-item"><a href="#">My profile</a></li>
-                            <li class="dropdown-divider"></li>
-                            {{-- ログアウトへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
-                        </ul>
+                    {{-- ログアウトへのリンク --}}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout.get') }}">ログアウト</li>
                     </li>
+                    
                 @else
+                    {{-- ゲストログインへのリンク --}}
+                    <li class="nav-item">{!! link_to_route('login.guest', 'ゲストログイン', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ユーザ登録ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('signup.get', '新規登録', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ログインページへのリンク --}}
