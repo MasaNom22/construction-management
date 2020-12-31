@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\UploadImage;
 
+use Illuminate\Support\Facades\Storage;
+
 class ImageListController extends Controller
 {
     function show(){
@@ -15,5 +17,13 @@ class ImageListController extends Controller
 		return view("image_list",[
 			"images" => $uploads
 		]);
+	}
+	
+	function destroy($id){
+		$deletePictures = UploadImage::find($id);
+		$deleteName = $deletePictures->file_path;
+		Storage::delete('public/' . $deleteName);
+		$deletePictures->delete();
+		return redirect("/list");
 	}
 }

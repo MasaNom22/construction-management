@@ -30,6 +30,8 @@ Route::get('/form',
 Route::post('/upload', 
 	[App\Http\Controllers\UploadImageController::class, "upload"]
 	)->name("upload_image");
+
+Route::delete('/list/{id}', 'ImageListController@destroy')->name("delete_image");	
 	
 Route::get('/list', 
 	[App\Http\Controllers\ImageListController::class, "show"]
