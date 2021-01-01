@@ -15,7 +15,7 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('genba_id');
+            $table->unsignedBigInteger('upload_image_id');
             $table->string('title');
             $table->string('content');
             $table->integer('status')->default(1);
@@ -23,7 +23,7 @@ class CreateTasksTable extends Migration
             $table->timestamps();
             
             // 外部キー制約
-            $table->foreign('genba_id')->references('id')->on('upload_images');
+            $table->foreign('upload_image_id')->references('id')->on('upload_images');
         });
     }
 
