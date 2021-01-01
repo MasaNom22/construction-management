@@ -15,12 +15,11 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('content');
-            $table->string('status');
             $table->unsignedBigInteger('genba_id');
-            $table->date('start_day');
-            $table->date('end_day');
-            $table->boolean('alart');
+            $table->string('title');
+            $table->string('content');
+            $table->integer('status')->default(1);
+            $table->date('due_day');
             $table->timestamps();
             
             // 外部キー制約

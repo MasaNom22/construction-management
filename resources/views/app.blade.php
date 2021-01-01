@@ -2,6 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
+        
         <title>
             @yield('title')
             </title>
@@ -14,6 +15,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+
     </head>
 
     <body>

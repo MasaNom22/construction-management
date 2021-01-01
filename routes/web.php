@@ -38,7 +38,7 @@ Route::get('/list',
 	)->name("image_list");
 Auth::routes();
 //タスク
-Route::resource('/tasks', 'TasksController');
+Route::get('/list/{id}/tasks', 'TasksController@index')->name('tasks.index');
 //カレンダー
 //画像表示 トップページ
 Route::get('/', 'ImageListController@show');
