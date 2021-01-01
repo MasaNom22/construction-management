@@ -22,17 +22,17 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 //ゲストログイン
 Route::get('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
-//画像投稿
+//画像投稿画面
 Route::get('/form', 
 	[App\Http\Controllers\UploadImageController::class, "show"]
 	)->name("upload_form");
-
+//画像アップロード
 Route::post('/upload', 
 	[App\Http\Controllers\UploadImageController::class, "upload"]
 	)->name("upload_image");
 //画像削除
 Route::delete('/list/{id}', 'ImageListController@destroy')->name("delete_image");	
-	
+//画像表示
 Route::get('/list', 
 	[App\Http\Controllers\ImageListController::class, "show"]
 	)->name("image_list");
@@ -40,6 +40,7 @@ Auth::routes();
 //タスク
 Route::resource('/tasks', 'TasksController');
 //カレンダー
-Route::get('/', 'CalendarController@show');
+//画像表示 トップページ
+Route::get('/', 'ImageListController@show');
 
 Route::get('/home', 'HomeController@index')->name('home');

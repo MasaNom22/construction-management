@@ -12,6 +12,6 @@ class UploadImage extends Model
     protected $table = "upload_images";
     //後にcreate()メソッドで保存するカラムを指定
     protected $fillable = [
-        'file_name', 'file_path', 'title',
+        'file_name', 'file_path', 'title', 'content',
     ];
 }

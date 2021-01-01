@@ -11,18 +11,24 @@
 	</ul>
 </div>
 @endif
-<form 
-	method="post"
-	action="{{ route('upload_image') }}"
-	enctype="multipart/form-data"
->
-
-
+<form 	method="post" action="{{ route('upload_image') }}" enctype="multipart/form-data">
 
 	@csrf
+	<div class="form-group row">
+		<label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+		<div class="col-md-6">
+			<input type="text" name="title" id="title" />
+		</div>
+	</div>
+	<div class="form-group row">
+		<label for="content" class="col-md-4 col-form-label text-md-right">{{ __('作業内容') }}</label>
+		<div class="col-md-6">
+			<input type="text" name="content" id="content" />
+		</div>
+	</div>
 	<input type="file" name="image" accept="image/png, image/jpeg" />
-		<input type="text" name="title"/>
-	<input type="submit" value="Upload">
+
+	<input type="submit" value="画像を保存する">
 </form>
 
 @endsection
