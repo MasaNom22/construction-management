@@ -14,4 +14,9 @@ class UploadImage extends Model
     protected $fillable = [
         'file_name', 'file_path', 'title', 'content',
     ];
+    
+    public function tasks()
+    {
+        return $this->hasMany('App\Task');
+    }
 }

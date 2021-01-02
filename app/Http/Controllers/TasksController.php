@@ -21,7 +21,8 @@ class TasksController extends Controller
         $current_folder = UploadImage::find($id);
         
         // 選ばれたフォルダに紐づくタスクを取得する
-        $tasks = Task::where('upload_image_id', $current_folder->id)->get();
+        // $tasks = Task::where('upload_image_id', $current_folder->id)->get();
+        $tasks = $current_folder->tasks()->get();
     
         // タスク一覧ビューでそれを表示
         return view('tasks/index', [

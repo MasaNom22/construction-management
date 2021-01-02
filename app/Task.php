@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+// この行を追加
+use Carbon\Carbon;
+
 class Task extends Model
 {
      /**
@@ -30,5 +33,15 @@ class Task extends Model
         }
 
         return self::STATUS[$status]['label'];
+    }
+    
+    /**
+     * 整形した期限日
+     * @return string
+     */
+    public function getFormattedDueDayAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['due_day'])
+            ->format('Y/m/d');
     }
 }
