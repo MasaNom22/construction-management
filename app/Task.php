@@ -9,6 +9,7 @@ use Carbon\Carbon;
 
 class Task extends Model
 {
+    protected $fillable = ['title', 'content', 'due_day'];
      /**
      * 状態定義
      */

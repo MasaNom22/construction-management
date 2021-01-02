@@ -44,6 +44,9 @@ Route::get('/list',
 	)->name("image_list");
 //タスク
 Route::get('/list/{id}/tasks', 'TasksController@index')->name('tasks.index');
+//タスク作成
+Route::get('/list/{id}/tasks/create', 'TasksController@showCreateForm')->name('tasks.create');
+Route::post('/list/{id}/tasks/create', 'TasksController@create');
 //カレンダー
 //画像表示 トップページ
 Route::get('/', 'ImageListController@show');

@@ -1,4 +1,10 @@
-@extends('app')
+@extends('layouts.app')
+
+@section('styles')
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+@endsection
+
 @section('content')
   <div class="container">
     <div class="row">
@@ -13,7 +19,7 @@
                 @endforeach
               </div>
             @endif
-            <form action="{{ route('tasks.create', ['id' => $upload_image_id]) }}" method="POST">
+            <form action="{{ route('tasks.create', ['id' => $folder_id]) }}" method="POST">
               @csrf
               <div class="form-group">
                 <label for="title">タイトル</label>
@@ -24,8 +30,8 @@
                 <input type="text" class="form-control" name="content" id="content" value="{{ old('content') }}" />
               </div>
               <div class="form-group">
-                <label for="due_date">期限</label>
-                <input type="text" class="form-control" name="due_date" id="due_date" value="{{ old('due_date') }}" />
+                <label for="due_day">期限</label>
+                <input type="text" class="form-control" name="due_day" id="due_day" value="{{ old('due_day') }}" />
               </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-primary">送信</button>
@@ -42,7 +48,7 @@
   <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
   <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
   <script>
-    flatpickr(document.getElementById('due_date'), {
+    flatpickr(document.getElementById('due_day'), {
       locale: 'ja',
       dateFormat: "Y/m/d",
       minDate: new Date()
