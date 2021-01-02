@@ -11,13 +11,24 @@ use App\UploadImage;
 class TasksController extends Controller
 {
     // getでtasks/にアクセスされた場合の「一覧表示処理」
-    public function index()
+    public function index($id)
     {
          //アップロードした画像を取得
 		$uploads = UploadImage::all();
+		$uploads1 = UploadImage::find($id);
+		
+		    // 選ばれたフォルダを取得する
+        $current_folder = UploadImage::find($id);
+        
+        // 選ばれたフォルダに紐づくタスクを取得する
+        $tasks = Task::where('upload_image_id', $current_folder->id)->get();
+    
         // タスク一覧ビューでそれを表示
         return view('tasks/index', [
             'images' => $uploads,
+            'current_folder_id' => $current_folder->id,
+            'tasks' => $tasks,
+            'picture_id' => $uploads1,
         ]);
     }
     

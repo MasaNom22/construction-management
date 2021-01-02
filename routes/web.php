@@ -13,6 +13,8 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+
 //新規登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -22,6 +24,10 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 //ゲストログイン
 Route::get('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+
+### ログイン状態で使用可能 ###
+Route::group(['middleware' => 'auth'], function() {
+
 //画像投稿画面
 Route::get('/form', 
 	[App\Http\Controllers\UploadImageController::class, "show"]
@@ -36,7 +42,6 @@ Route::delete('/list/{id}', 'ImageListController@destroy')->name("delete_image")
 Route::get('/list', 
 	[App\Http\Controllers\ImageListController::class, "show"]
 	)->name("image_list");
-Auth::routes();
 //タスク
 Route::get('/list/{id}/tasks', 'TasksController@index')->name('tasks.index');
 //カレンダー
@@ -44,3 +49,4 @@ Route::get('/list/{id}/tasks', 'TasksController@index')->name('tasks.index');
 Route::get('/', 'ImageListController@show');
 
 Route::get('/home', 'HomeController@index')->name('home');
+});
