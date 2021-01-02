@@ -47,6 +47,9 @@ Route::get('/list/{id}/tasks', 'TasksController@index')->name('tasks.index');
 //タスク作成
 Route::get('/list/{id}/tasks/create', 'TasksController@showCreateForm')->name('tasks.create');
 Route::post('/list/{id}/tasks/create', 'TasksController@create');
+//タスク編集
+Route::get('/folders/{id}/tasks/{task_id}/edit', 'TasksController@showEditForm')->name('tasks.edit');
+Route::post('/folders/{id}/tasks/{task_id}/edit', 'TasksController@edit');
 //カレンダー
 //画像表示 トップページ
 Route::get('/', 'ImageListController@show');

@@ -10,6 +10,8 @@ use App\UploadImage;
 
 use App\Http\Requests\CreateTasks;
 
+use App\Http\Requests\EditTasks;
+
 class TasksController extends Controller
 {
     // getでtasks/にアクセスされた場合の「一覧表示処理」
@@ -57,6 +59,33 @@ var_dump($id);
     {
         return view('tasks/create', [
             'folder_id' => $id
+        ]);
+    }
+    
+    public function showEditForm($id, $task_id)
+    {
+    $task = Task::find($task_id);
+
+        return view('tasks/edit', [
+            'task' => $task,
+        ]);
+    }
+    
+    public function edit($id,$task_id, EditTasks $request)
+    {
+        // 1
+        $task = Task::find($task_id);
+    
+        // 2
+        $task->title = $request->title;
+        $task->content = $request->content;
+        $task->status = $request->status;
+        $task->due_day = $request->due_day;
+        $task->save();
+    
+        // 3
+        return redirect()->route('tasks.index', [
+            'id' => $task->upload_image_id,
         ]);
     }
 }

@@ -47,7 +47,7 @@
             <span class="label {{ $task->status_class }}">{{ $task->status_label }}</span>
           </td>
           <td>{{ $task->formatted_due_day }}</td>
-          <td><a href="#">編集</a></td>
+          <td><a href="{{ route('tasks.edit', ['id' => $task->upload_image_id, 'task_id' => $task->id]) }}">編集</a>
         </tr>
       @endforeach
     </tbody>
