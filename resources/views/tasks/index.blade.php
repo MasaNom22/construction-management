@@ -4,10 +4,12 @@
 
 <div class=container>
     <div class=row>
-        <div class="list-group col-md-3">
+        <div class="list-group col-md-4">
           <div>
+            <p><span class="badge badge-primary">選択中</span>
                 {{ $picture_id->title }}
                 {{ $picture_id->content }}
+                </p>
           </div>
         @foreach($images as $image)
         <a href="{{ route('tasks.index', ['id' => $image->id]) }}" class="list-group-item">
@@ -18,12 +20,12 @@
         </div>
 
 
-<div class="column col-md-9">
+<div class="column col-md-8">
         <div class="panel panel-default">
-  <div class="panel-heading">タスク</div>
+  <div class="panel-heading"><h2 class="ml-3">タスク</h2></div>
   <div class="panel-body">
     <div class="text-right">
-      <a href="{{ route('tasks.create', ['id' => $current_folder_id]) }}" class="btn btn-default btn-block">
+      <a href="{{ route('tasks.create', ['id' => $current_folder_id]) }}" class="btn btn-default">
         タスクを追加する
       </a>
     </div>
