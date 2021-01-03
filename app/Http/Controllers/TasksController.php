@@ -41,7 +41,6 @@ class TasksController extends Controller
     public function create($id, CreateTasks $request)
 {
     $current_folder = UploadImage::find($id);
-var_dump($id);
     $task = new Task();
     $task->title = $request->title;
     $task->content = $request->content;
@@ -88,4 +87,13 @@ var_dump($id);
             'id' => $task->upload_image_id,
         ]);
     }
+    
+    public function destroy($id,$task_id){
+		$deletetask = Task::find($task_id);
+		$redirect = Task::find($task_id);
+		$deletetask->delete();
+		return redirect()->route('tasks.index', [
+            'id' => $redirect->upload_image_id,
+        ]);
+	}
 }

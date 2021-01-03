@@ -4,7 +4,7 @@
 
 <div class=container>
     <div class=row>
-        <div class="list-group col-md-4">
+        <div class="list-group col-md-3">
           <div>
                 {{ $picture_id->title }}
                 {{ $picture_id->content }}
@@ -18,7 +18,7 @@
         </div>
 
 
-<div class="column col-md-8">
+<div class="column col-md-9">
         <div class="panel panel-default">
   <div class="panel-heading">タスク</div>
   <div class="panel-body">
@@ -47,7 +47,13 @@
             <span class="label {{ $task->status_class }}">{{ $task->status_label }}</span>
           </td>
           <td>{{ $task->formatted_due_day }}</td>
-          <td><a href="{{ route('tasks.edit', ['id' => $task->upload_image_id, 'task_id' => $task->id]) }}">編集</a>
+          <div class=col-md-2>
+          <td><a href="{{ route('tasks.edit', ['id' => $task->upload_image_id, 'task_id' => $task->id]) }}">編集</a></td>
+
+          {{-- タスク削除フォーム --}}
+          <td>{!! Form::model($task, ['route' => ['tasks.destroy', $task->upload_image_id ,$task->id], 'method' => 'delete']) !!}
+              {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+          {!! Form::close() !!}</td>
         </tr>
       @endforeach
     </tbody>
