@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'トップページgit')
+@section('title', 'トップページ')
 
 @section('content')
 
