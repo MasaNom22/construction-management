@@ -27,7 +27,8 @@ class UploadImageController extends Controller
 			$path = $upload_image->store('uploads',"public");
 			//画像の保存に成功したらDBに記録する
 			if($path){
-				UploadImage::create([
+				// UploadImage::create([
+				$request->user()->uploadimages()->create([
 					"file_name" => $upload_image->getClientOriginalName(),
 					"title" => $title,
 					"content" => $content,

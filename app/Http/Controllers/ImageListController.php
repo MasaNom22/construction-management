@@ -11,12 +11,17 @@ use Illuminate\Support\Facades\Storage;
 class ImageListController extends Controller
 {
     function show(){
+    	if (\Auth::check()) { // 認証済みの場合
+            // 認証済みユーザを取得
+            $user = \Auth::user();
 		//アップロードした画像を取得
-		$uploads = UploadImage::orderBy("id", "desc")->get();
+		$uploads = $user->uploadimages()->orderBy("id", "desc")->get();
+		// $uploads = UploadImage::orderBy("id", "desc")->get();
 
 		return view("image_list",[
 			"images" => $uploads
 		]);
+    	}
 	}
 	
 	function destroy($id){

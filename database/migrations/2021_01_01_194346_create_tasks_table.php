@@ -23,7 +23,7 @@ class CreateTasksTable extends Migration
             $table->timestamps();
             
             // 外部キー制約
-            $table->foreign('upload_image_id')->references('id')->on('upload_images');
+            $table->foreign('upload_image_id')->references('id')->on('upload_images')->onDelete('cascade');
         });
     }
 
