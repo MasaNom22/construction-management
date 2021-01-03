@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title', 'トップページgit')
+
 @section('content')
 
 <hr />
