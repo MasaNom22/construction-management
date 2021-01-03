@@ -13,8 +13,6 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-
 //新規登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -25,7 +23,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 //ゲストログイン
 Route::get('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
-### ログイン状態で使用可能 ###
+//ログイン状態で使用可能
 Route::group(['middleware' => 'auth'], function() {
 
 //画像投稿画面
