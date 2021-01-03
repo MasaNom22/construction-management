@@ -13,6 +13,9 @@
                 @if (Auth::check())
                     {{-- ユーザ一覧ページへのリンク --}}
                     <li class="nav-item"><a href="#" class="nav-link">Users</a></li>
+                    <li class="nav-item">
+                    <span class="nav-link">ようこそ、 {{ Auth::user()->name }}さん</span>
+                    </li>
                     {{-- 画像投稿へのリンク --}}
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('upload_form') }}"><i class="fas fa-arrow-alt-circle-down mr-1"></i>画像投稿</a>
@@ -21,6 +24,7 @@
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('image_list') }}"><i class="fas fa-user-plus mr-1"></i>画像確認</a>
                     </li>
+                    
                     {{-- ログアウトへのリンク --}}
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout.get') }}">ログアウト</a>
