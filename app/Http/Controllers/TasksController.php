@@ -49,7 +49,7 @@ class TasksController extends Controller
     $task->due_day = $request->due_day;
     
     // preg_match_allを使用して#タグのついた文字列を取得している
-       preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tags, $match);
+       preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
        $tags = [];
        // $matchの中でも#が付いていない方を使用する(配列番号で言うと1)
        foreach($match[1] as $tag) {

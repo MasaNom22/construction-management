@@ -35,6 +35,7 @@
     <tr>
       <th>タイトル</th>
       <th>内容</th>
+      <th>タグ</th>
       <th>状態</th>
       <th>期限</th>
       <th></th>
@@ -42,9 +43,15 @@
     </thead>
     <tbody>
       @foreach($tasks as $task)
+
         <tr>
           <td>{{ $task->title }}</td>
           <td>{{ $task->content }}</td>
+          <td>
+	        @foreach($task->tags as $task_tag)
+		      <span class="badge badge-pill badge-info">{{$task_tag->name}}</span>
+          @endforeach
+      </td>
           <td>
             <span class="label {{ $task->status_class }}">{{ $task->status_label }}</span>
           </td>
