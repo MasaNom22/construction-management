@@ -26,8 +26,12 @@
                 <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" />
               </div>
               <div class="form-group">
-                <label for="title">内容</label>
+                <label for="content">内容</label>
                 <input type="text" class="form-control" name="content" id="content" value="{{ old('content') }}" />
+              </div>
+              <div class="form-group">
+                <label for="tags">タグ</label>
+                <input type="text" class="form-control" name="tags" id="tags" value="{{ old('tags') }}" />
               </div>
               <div class="form-group">
                 <label for="due_day">期限</label>

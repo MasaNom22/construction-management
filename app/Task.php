@@ -45,4 +45,9 @@ class Task extends Model
         return Carbon::createFromFormat('Y-m-d', $this->attributes['due_day'])
             ->format('Y/m/d');
     }
+    //Tagと多対多の関係
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag', 'tasks_tags'); 
+    }
 }

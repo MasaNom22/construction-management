@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Task; 
 
+use App\Tag;
+
 use App\UploadImage;
 
 use App\Http\Requests\CreateTasks;
@@ -45,9 +47,26 @@ class TasksController extends Controller
     $task->title = $request->title;
     $task->content = $request->content;
     $task->due_day = $request->due_day;
+    
+    // preg_match_allを使用して#タグのついた文字列を取得している
+       preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ亜-熙]+)/u', $request->tags, $match);
+       $tags = [];
+       // $matchの中でも#が付いていない方を使用する(配列番号で言うと1)
+       foreach($match[1] as $tag) {
+           // firstOrCreateで重複を防ぎながらタグを作成している。
+           $record = Tag::firstOrCreate(['name' => $tag]);
+           array_push($tags, $record);
+       }
 
+       $tags_id = [];
+       foreach($tags as $tag) {
+           array_push($tags_id, $tag->id);
+       }
+        
+        
     $current_folder->tasks()->save($task);
-
+    
+    $task->tags()->attach($tags_id);
     return redirect()->route('tasks.index', [
         'id' => $current_folder->id,
     ]);
