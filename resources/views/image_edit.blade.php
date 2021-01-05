@@ -21,9 +21,9 @@
                 <input type="text" class="form-control" name="content" id="content"
                        value="{{ old('content') ?? $image->content }}" />
               </div>
-	        <h5>リフォーム内容: {{ $image->content }}</h5>
-	                    {{-- タスクリストへのリンク --}}
-            <a class="" href="{{ route('tasks.index',$image->id) }}">タスク一覧画面へ</a>
+	        <div class="text-right">
+                <button type="submit" class="btn btn-primary">変更</button>
+              </div>
             <div class="mx-2">
 	        <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"　alt="建設現場の写真"/>
 	        </div>
