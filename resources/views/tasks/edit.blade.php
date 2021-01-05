@@ -32,7 +32,7 @@
                        value="{{ old('title') ?? $task->title }}" />
               </div>
               <div class="form-group">
-                <label for="title">内容</label>
+                <label for="content">内容</label>
                 <input type="text" class="form-control" name="content" id="content"
                        value="{{ old('content') ?? $task->content }}" />
               </div>
