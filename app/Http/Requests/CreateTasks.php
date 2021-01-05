@@ -26,7 +26,7 @@ class CreateTasks extends FormRequest
        return [
             'title' => 'required|max:255',
             'content' => 'required|max:255',
-            'tags' => 'required|max:255',
+            // 'tags' => 'required|max:255',
             'due_day' => 'required|date|after_or_equal:today',
         ];
     }
