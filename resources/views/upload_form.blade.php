@@ -15,7 +15,7 @@
 
 	@csrf
 	<div class="form-group row">
-		<label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+		<label for="title" class="col-md-4 col-form-label text-md-right">{{ __('建築現場名') }}</label>
 		<div class="col-md-6">
 			<input type="text" name="title" id="title" />
 		</div>
@@ -28,7 +28,7 @@
 	</div>
 	<input type="file" name="image" accept="image/png, image/jpeg" />
 
-	<input type="submit" value="画像を保存する">
+	<input type="submit" value="建築現場の写真を保存する">
 </form>
 
 @endsection
