@@ -27,4 +27,12 @@ class UploadImage extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    /**
+     * このユーザが所有するタスク。（ Taskモデルとの関係を定義）
+     */
+    public function loadRelationshipCounts()
+    {
+        $this->loadCount('tasks');
+    }
 }

@@ -11,6 +11,7 @@
             <p><span class="badge badge-primary">選択中</span>
                 {{ $picture_id->title }}
                 {{ $picture_id->content }}
+                <span class="badge badge-secondary">{{ $picture_id->tasks_count }}</span>
                 </p>
           </div>
         @foreach($images as $image)

@@ -26,6 +26,9 @@ class TasksController extends Controller
 		    // 選ばれたフォルダを取得する
         $current_folder = UploadImage::find($id);
         
+        // 関係するモデルの件数をロード
+        $uploads1->loadRelationshipCounts();
+        
         // 選ばれたフォルダに紐づくタスクを取得する
         // $tasks = Task::where('upload_image_id', $current_folder->id)->get();
         $tasks = $current_folder->tasks()->get();

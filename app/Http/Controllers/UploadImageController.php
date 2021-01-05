@@ -11,6 +11,26 @@ class UploadImageController extends Controller
     function show(){
 		return view("upload_form");
 	}
+	
+	public function showEditForm($id)
+    {
+    $image = UploadImage::find($id);
+
+        return view('image_edit', [
+            'image' => $image,
+        ]);
+    }
+    
+    public function edit($id, Request $request)
+    {
+        $image = UploadImage::find($id);
+    	
+    	$image->title = $request->title;
+    	$image->content = $request->content;
+        $image->save();
+    
+        return redirect()->route('image_list');
+    }
 
 	function upload(Request $request){
 		$request->validate([

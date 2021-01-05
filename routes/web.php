@@ -37,7 +37,10 @@ Route::post('/upload',
 	[App\Http\Controllers\UploadImageController::class, "upload"]
 	)->name("upload_image");
 //画像削除
-Route::delete('/list/{id}', 'ImageListController@destroy')->name("delete_image");	
+Route::delete('/list/{id}', 'ImageListController@destroy')->name("delete_image");
+//タスク編集
+Route::get('/list/{id}/edit', 'UploadImageController@showEditForm')->name('image.edit');
+Route::post('/list/{id}/edit', 'UploadImageController@edit');
 //画像表示
 Route::get('/list', 
 	[App\Http\Controllers\ImageListController::class, "show"]
