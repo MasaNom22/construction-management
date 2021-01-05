@@ -21,7 +21,9 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 //ゲストログイン
-Route::get('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+// Route::get('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+# ゲストユーザーログイン
+Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
 //ログイン状態で使用可能
 Route::group(['middleware' => 'auth'], function() {

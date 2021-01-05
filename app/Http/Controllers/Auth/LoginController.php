@@ -6,6 +6,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -39,14 +40,28 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
-    public function guestLogin() {
-        $name = 'a';
-        $password = 'aaaaaaaa';
+    // ゲストユーザー用のメールアドレスを定数として定義
+    private const GUEST_USER_EMAIL = 'guest@guest.com';
 
-        if(Auth::attempt(['name' => $name, 'password' => $password])) {
+    // ゲストログイン処理
+    public function guestLogin()
+    {
+        $user = User::where('email', self::GUEST_USER_EMAIL)->first();
+        if ($user) {
+            Auth::login($user);
             return redirect('/');
         }
-
         return redirect('/');
     }
+    
+    // public function guestLogin() {
+    //     $name = 'a';
+    //     $password = 'aaaaaaaa';
+
+    //     if(Auth::attempt(['name' => $name, 'password' => $password])) {
+    //         return redirect('/');
+    //     }
+
+    //     return redirect('/');
+    // }
 }
