@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title', '画像投稿画面')
+
 @section('content')
 
 @if (count($errors) > 0)

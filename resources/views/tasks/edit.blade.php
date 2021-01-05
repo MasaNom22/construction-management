@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'タスク編集画面')
+
 @section('styles')
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
@@ -10,7 +12,7 @@
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
         <nav class="panel panel-default">
-          <div class="panel-heading">タスクを編集する</div>
+          <div class="panel-heading mb-3">タスクを編集する</div>
           <div class="panel-body">
             @if($errors->any())
               <div class="alert alert-danger">

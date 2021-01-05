@@ -1,5 +1,7 @@
 @extends('app')
 
+@section('title', 'タスク管理画面')
+
 @section('content')
 
 <div class=container>
