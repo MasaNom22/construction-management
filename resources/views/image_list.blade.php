@@ -21,6 +21,7 @@
             {!! Form::model($image, ['route' => ['delete_image', $image->id], 'method' => 'delete']) !!}
                 {!! Form::submit('画像削除', ['class' => 'btn btn-danger']) !!}
             {!! Form::close() !!}
+            <a href="{{ route('image.edit', ['id' => $image->id]) }}">編集</a>
         </div>
         @endforeach
     </div>
