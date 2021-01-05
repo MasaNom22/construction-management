@@ -11,6 +11,12 @@
   <div class="container">
     <div class="row">
       <div class="col col-md-offset-3 col-md-6">
+        <div>
+            <p><span class="badge badge-primary">選択中</span>
+                {{ $image->title }}
+                {{ $image->content }}
+                </p>
+          </div>
         <nav class="panel panel-default">
           <div class="panel-heading mb-3">タスクを追加する</div>
           <div class="panel-body">

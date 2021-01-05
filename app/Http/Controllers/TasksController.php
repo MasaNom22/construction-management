@@ -78,7 +78,9 @@ class TasksController extends Controller
     // getでmessages/idにアクセスされた場合の「取得表示処理」
     public function showCreateForm($id)
     {
+        $image = UploadImage::find($id);
         return view('tasks/create', [
+            'image' => $image,
             'folder_id' => $id
         ]);
     }
