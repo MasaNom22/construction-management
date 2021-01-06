@@ -14,14 +14,21 @@
             <a class="" href="{{ route('tasks.index',$image->id) }}">タスク一覧画面へ</a>
             <div class="mx-2">
 	        <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"　alt="建設現場の写真"/>
-	        </div>
+	        
 	        <!--<p>{{ $image->file_name }}</p>-->
-
+	        <div class="d-flex flex-row .justify-content-between p-2 bd-highlight ">
+	        <div class="d-inline-flex col-md-6">
+            <a href="{{ route('image.edit', ['id' => $image->id]) }}">編集</a>
+            </div>
+            <div class="d-inline-flex col-md-6">
 	        {{-- メッセージ削除フォーム --}}
             {!! Form::model($image, ['route' => ['delete_image', $image->id], 'method' => 'delete']) !!}
-                {!! Form::submit('画像削除', ['class' => 'btn btn-danger']) !!}
+                {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
             {!! Form::close() !!}
-            <a href="{{ route('image.edit', ['id' => $image->id]) }}">編集</a>
+            </div>
+            </div>
+            </div>
+            
         </div>
         @endforeach
     </div>
