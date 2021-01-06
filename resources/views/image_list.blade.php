@@ -18,7 +18,7 @@
 	        <!--<p>{{ $image->file_name }}</p>-->
 	        <div class="d-flex flex-row .justify-content-between p-2 bd-highlight ">
 	        <div class="d-inline-flex col-md-6">
-            <a href="{{ route('image.edit', ['id' => $image->id]) }}">編集</a>
+            <a href="{{ route('image.edit', ['id' => $image->id]) }}">編集中</a>
             </div>
             <div class="d-inline-flex col-md-6">
 	        {{-- メッセージ削除フォーム --}}
