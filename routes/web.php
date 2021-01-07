@@ -22,6 +22,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 //ゲストログイン
 // Route::get('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+
 # ゲストユーザーログイン
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
@@ -42,9 +43,11 @@ Route::delete('/list/{id}', 'ImageListController@destroy')->name("delete_image")
 Route::get('/list/{id}/edit', 'UploadImageController@showEditForm')->name('image.edit');
 Route::post('/list/{id}/edit', 'UploadImageController@edit');
 //画像表示
+
 Route::get('/list', 
 	[App\Http\Controllers\ImageListController::class, "show"]
 	)->name("image_list");
+
 //タスク
 Route::get('/list/{id}/tasks', 'TasksController@index')->name('tasks.index');
 //タスク作成
@@ -57,7 +60,8 @@ Route::post('/list/{id}/tasks/{task_id}/edit', 'TasksController@edit');
 Route::delete('/list/{id}/tasks/{task_id}', 'TasksController@destroy')->name("tasks.destroy");
 //カレンダー
 //画像表示 トップページ
+Route::group(['middleware' => 'admin_auth'], function () {
 Route::get('/', 'ImageListController@show');
-
+});
 Route::get('/home', 'HomeController@index')->name('home');
 });
