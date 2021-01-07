@@ -27,6 +27,9 @@
         <div class="panel panel-default">
   <div class="panel-heading"><h2 class="ml-3">タスク</h2></div>
   <div class="panel-body">
+    {!! Form::model($picture_id, ['route' => ['tasks.statusedit', 'id' => $picture_id], 'method' => 'put']) !!}
+              {!! Form::submit('一括更新', ['class' => 'btn btn-success btn-sm']) !!}
+          {!! Form::close() !!}
     <div class="text-right">
       <a href="{{ route('tasks.create', ['id' => $current_folder_id]) }}" class="btn btn-default">
         タスクを追加する

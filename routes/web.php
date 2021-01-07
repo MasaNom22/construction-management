@@ -56,6 +56,8 @@ Route::post('/list/{id}/tasks/create', 'TasksController@create');
 //タスク編集
 Route::get('/list/{id}/tasks/{task_id}/edit', 'TasksController@showEditForm')->name('tasks.edit');
 Route::post('/list/{id}/tasks/{task_id}/edit', 'TasksController@edit');
+//タスク一括更新
+Route::put('/list/{id}/tasks', 'TasksController@statusedit')->name("tasks.statusedit");
 //タスク削除
 Route::delete('/list/{id}/tasks/{task_id}', 'TasksController@destroy')->name("tasks.destroy");
 //カレンダー

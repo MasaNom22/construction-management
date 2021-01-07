@@ -112,6 +112,19 @@ class TasksController extends Controller
         ]);
     }
     
+    public function statusedit($id)
+    {
+        //画像ごとのタスクを一括更新
+        Task::where('upload_image_id',$id)->update(['status' => '3']);
+        $task = Task::where('upload_image_id',$id)->first();
+
+    
+        // 3
+        return redirect()->route('tasks.index', [
+            'id' => $task->upload_image_id,
+        ]);
+    }
+    
     public function destroy($id,$task_id){
 		$deletetask = Task::find($task_id);
 		$redirect = Task::find($task_id);
