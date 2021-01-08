@@ -11,7 +11,7 @@
             <p><span class="badge badge-primary">選択中</span>
                 {{ $picture_id->title }}
                 {{ $picture_id->content }}
-                <span class="badge badge-secondary">{{ $picture_id->tasks_count }}</span>
+                <span class="badge badge-primary">{{ $picture_id->tasks_count }}</span>
                 </p>
           </div>
         @foreach($images as $image)
@@ -31,7 +31,7 @@
               {!! Form::submit('一括更新', ['class' => 'btn btn-success btn-sm']) !!}
           {!! Form::close() !!}
     <div class="text-right">
-      <a href="{{ route('tasks.create', ['id' => $current_folder_id]) }}" class="btn btn-default">
+      <a href="{{ route('tasks.create', ['id' => $current_folder_id]) }}" class="btn btn-success">
         タスクを追加する
       </a>
     </div>
@@ -67,7 +67,7 @@
 
           {{-- タスク削除フォーム --}}
           <td>{!! Form::model($task, ['route' => ['tasks.destroy', $task->upload_image_id ,$task->id], 'method' => 'delete']) !!}
-              {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+              {!! Form::submit('削除', ['class' => 'btn btn-success btn-sm']) !!}
           {!! Form::close() !!}</td>
         </tr>
       @endforeach
