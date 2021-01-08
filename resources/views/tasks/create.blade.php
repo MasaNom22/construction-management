@@ -39,7 +39,7 @@
               </div>
               <div class="form-group">
                 <label for="tags">タグ(#から入力してください)</label>
-                <input type="text" class="form-control" name="tags" id="tags" value="{{ old('tags') }}" />
+                <input type="text" class="form-control" name="tags" id="tags" placeholder="#タグ名" value="{{ old('tags') }}" />
               </div>
               <div class="form-group">
                 <label for="due_day">期限</label>
