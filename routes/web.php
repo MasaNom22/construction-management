@@ -63,3 +63,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 });
 //ユーザー一覧と検索画面
 Route::get('/users','UsersController@index')->name("users.index");
+
