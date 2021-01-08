@@ -23,7 +23,7 @@
             <div class="d-inline-flex col-md-6">
 	        {{-- メッセージ削除フォーム --}}
             {!! Form::model($image, ['route' => ['delete_image', $image->id], 'method' => 'delete']) !!}
-                {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+                {!! Form::submit('削除', ['class' => 'btn btn-success btn-sm']) !!}
             {!! Form::close() !!}
             </div>
             </div>

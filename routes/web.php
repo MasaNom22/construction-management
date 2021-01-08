@@ -34,20 +34,14 @@ Route::get('/form',
 	[App\Http\Controllers\UploadImageController::class, "show"]
 	)->name("upload_form");
 //画像アップロード
-Route::post('/upload', 
-	[App\Http\Controllers\UploadImageController::class, "upload"]
-	)->name("upload_image");
+Route::post('/upload', 'UploadImageController@upload')->name("upload_image");
 //画像削除
 Route::delete('/list/{id}', 'ImageListController@destroy')->name("delete_image");
 //タスク編集
 Route::get('/list/{id}/edit', 'UploadImageController@showEditForm')->name('image.edit');
 Route::post('/list/{id}/edit', 'UploadImageController@edit');
 //画像表示
-
-Route::get('/list', 
-	[App\Http\Controllers\ImageListController::class, "show"]
-	)->name("image_list");
-
+Route::get('/list', 'ImageListController@show')->name("image_list");
 //タスク
 Route::get('/list/{id}/tasks', 'TasksController@index')->name('tasks.index');
 //タスク作成
@@ -63,7 +57,7 @@ Route::delete('/list/{id}/tasks/{task_id}', 'TasksController@destroy')->name("ta
 //カレンダー
 //画像表示 トップページ
 Route::group(['middleware' => 'admin_auth'], function () {
-Route::get('/', 'ImageListController@show');
+Route::get('/', 'ImageListController@show')->name("image_list");;
 });
 Route::get('/home', 'HomeController@index')->name('home');
 });
