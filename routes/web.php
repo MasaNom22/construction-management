@@ -62,4 +62,4 @@ Route::get('/', 'ImageListController@show')->name("image_list");;
 Route::get('/home', 'HomeController@index')->name('home');
 });
 //ユーザー一覧と検索画面
-Route::get('/member','UsersController@index')->name("users.index");
+Route::get('/users','UsersController@index')->name("users.index");

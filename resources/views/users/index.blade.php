@@ -7,41 +7,37 @@
 <div class=container>
     <div class=row>
         <div class="list-group col-md-4">
-
-<h4>検索条件を入力してください</h4>
-<form action="{{ url('member/serch')}}" method="post">
-  {{ csrf_field()}}
-  {{method_field('get')}}
-  <div class="form-group">
-    <label>名前</label>
-    <input type="text" class="form-control" placeholder="検索したい名前を入力してください" name="name">
-  </div>
-  <button type="submit" class="btn btn-primary col-md-5">検索</button>
-</form>
-</div>
-@if(session('flash_message'))
-<div class="alert alert-primary" role="alert" style="margin-top:50px;">{{ session('flash_message')}}</div>
-@endif
-<div class="column col-md-8">
-<div style="margin-top:50px;">
-<h1>下請け一覧</h1>
-<table class="table">
-  <tr>
-    <th>ユーザー名</th>
-  </tr>
-@foreach($users as $user)
-  <tr>
-    <td>{{$user->name}}</td>
-  </tr>
-@endforeach
-</table>
-{{ $users->links() }}
-</div>
-
-</div>
-</div>
-</div>
-
+            <h4>検索条件を入力してください</h4>
+            <form action="{{ url('member/serch')}}" method="post">
+              {{ csrf_field()}}
+              {{method_field('get')}}
+                <div class="form-group">
+                    <label>名前</label>
+                    <input type="text" class="form-control" placeholder="検索したい名前を入力してください" name="name">
+                </div>
+                <button type="submit" class="btn btn-primary col-md-5">検索</button>
+            </form>
+        </div>
+        @if(session('flash_message'))
+        <div class="alert alert-primary" role="alert" style="margin-top:50px;">{{ session('flash_message')}}</div>
+            @endif
+            <div class="column col-md-8">
+                <div style="margin-top:50px;">
+                    <h1>下請け一覧</h1>
+                        <table class="table">
+                            <tr>
+                                <th>ユーザー名</th>
+                            </tr>
+                            @foreach($users as $user)
+                            <tr>
+                                <td>{{$user->name}}</td>
+                            </tr>
+                            @endforeach
+                        </table>
+                            {{ $users->links() }}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
