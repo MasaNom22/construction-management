@@ -13,7 +13,6 @@ class UsersController extends Controller
   $keyword = $request->input('name');
  
   $users = User::where('role','member')->paginate(5);
- 
   //もし検索欄に名前があったら
   if(!empty($keyword))
   {
