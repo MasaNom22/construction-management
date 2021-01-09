@@ -13,9 +13,12 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-//新規登録
+//新規登録(管理者)
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
+//新規登録(ユーザー)
+Route::get('signup/users', 'Auth\RegisterUsersController@showRegistrationForm2')->name('signup.get2');
+Route::post('signup/users', 'Auth\RegisterUsersController@register2')->name('signup.post2');
 // 認証
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
