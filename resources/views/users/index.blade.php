@@ -23,8 +23,13 @@
             @endif
             <div class="column col-md-8">
                 <div style="margin-top:50px;">
-                    <h1>下請け一覧</h1>
-                    <li class="nav-item">{!! link_to_route('signup.get2', '新規登録', [], ['class' => 'nav-link']) !!}</li>
+                    <div class="d-inline-flex col-md-4">
+                    <h2>下請業者一覧</h2>
+                    </div>
+                    <div class="d-inline-flex col-md-4">
+	        <button class="btn btn-primary">{!! link_to_route('signup.get2', '下請業者登録', [], ['class' => 'text-white']) !!}</button>
+            </div>
+                    
                         <table class="table">
                             <tr>
                                 <th>業者名</th>
