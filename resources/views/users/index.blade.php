@@ -24,9 +24,10 @@
             <div class="column col-md-8">
                 <div style="margin-top:50px;">
                     <h1>下請け一覧</h1>
+                    <li class="nav-item">{!! link_to_route('signup.get2', '新規登録', [], ['class' => 'nav-link']) !!}</li>
                         <table class="table">
                             <tr>
-                                <th>ユーザー名</th>
+                                <th>業者名</th>
                             </tr>
                             @foreach($users as $user)
                             <tr>
