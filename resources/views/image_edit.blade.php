@@ -17,7 +17,7 @@
                        value="{{ old('title') ?? $image->title }}" />
               </div>
              <div class="form-group">
-                <label for="title">リフォーム内容</label>
+                <label for="title">施工内容</label>
                 <input type="text" class="form-control" name="content" id="content"
                        value="{{ old('content') ?? $image->content }}" />
               </div>
