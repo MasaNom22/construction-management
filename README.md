@@ -8,7 +8,7 @@
 
 
 ## 使用技術
-- php(7.4.14)
+- php(7.3.24)
 - Laravel Framework(6.20.9)
 - AWS:S3
 
