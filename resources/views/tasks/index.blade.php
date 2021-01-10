@@ -66,8 +66,12 @@
           </td>
           <td>{{ $task->formatted_due_day }}</td>
           <div class=col-md-2>
-          <td><a href="{{ route('tasks.edit', ['id' => $task->upload_image_id, 'task_id' => $task->id]) }}">編集</a></td>
-
+          <!--<td><a href="{{ route('tasks.edit', ['id' => $task->upload_image_id, 'task_id' => $task->id]) }}">編集</a></td>-->
+          <!--<td><a class="btn btn-success btn-sm " href="{{ route('tasks.edit', ['id' => $task->upload_image_id, 'task_id' => $task->id]) }}">編集</a></td>-->
+          {{-- タスク編集フォーム --}}
+          <td>{!! Form::model($task, ['route' => ['tasks.edit', $task->upload_image_id ,$task->id], 'method' => 'get']) !!}
+              {!! Form::submit('編集', ['class' => 'btn btn-success btn-sm']) !!}
+          {!! Form::close() !!}</td>
           {{-- タスク削除フォーム --}}
           <td>{!! Form::model($task, ['route' => ['tasks.destroy', $task->upload_image_id ,$task->id], 'method' => 'delete']) !!}
               {!! Form::submit('削除', ['class' => 'btn btn-success btn-sm']) !!}
