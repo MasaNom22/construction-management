@@ -25,7 +25,7 @@
                 <button type="submit" class="btn btn-primary">変更</button>
               </div>
             <div class="mx-2">
-	        <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"　alt="建設現場の写真"/>
+	        <img src="{{ Storage::disk('s3')->url($image->file_path) }}" style="width:100%;"　alt="建設現場の写真"/>
 	        </div>
 	        </form>
 	            </div>
