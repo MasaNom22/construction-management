@@ -27,7 +27,7 @@ class ImageListController extends Controller
 	function destroy($id){
 		$deletePictures = UploadImage::find($id);
 		$deleteName = $deletePictures->file_path;
-		Storage::delete('public/' . $deleteName);
+		Storage::disk('s3')->delete($deleteName);
 		$deletePictures->delete();
 		return redirect("/list");
 	}
