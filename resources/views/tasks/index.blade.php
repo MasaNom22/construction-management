@@ -29,7 +29,7 @@
   <div class="panel-body">
     @if($picture_id->tasks_count >0)
         {!! Form::model($picture_id, ['route' => ['tasks.statusedit', 'id' => $picture_id], 'method' => 'put']) !!}
-              {!! Form::submit('タスク一括更新', ['class' => 'btn btn-success btn-sm']) !!}
+              {!! Form::submit('タスク一括完了', ['class' => 'btn btn-success btn-sm']) !!}
           {!! Form::close() !!}
           @else
           @endif
