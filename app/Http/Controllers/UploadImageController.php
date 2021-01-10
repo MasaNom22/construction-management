@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\UploadImage;
+use Storage;
 
 class UploadImageController extends Controller
 {
@@ -42,11 +43,26 @@ class UploadImageController extends Controller
 		$title = $request->input('title');
 		$content = $request->input('content');
 
+		// if($upload_image) {
+		// 	//アップロードされた画像を保存する
+		// 	$path = $upload_image->store('uploads',"public");
+		// 	//画像の保存に成功したらDBに記録する
+		// 	if($path){
+		// 		// UploadImage::create([
+		// 		$request->user()->uploadimages()->create([
+		// 			"file_name" => $upload_image->getClientOriginalName(),
+		// 			"title" => $title,
+		// 			"content" => $content,
+		// 			"file_path" => $path
+		// 		]);
+		// 	}
+		// }
+		
 		if($upload_image) {
-			//アップロードされた画像を保存する
-			$path = $upload_image->store('uploads',"public");
-			//画像の保存に成功したらDBに記録する
-			if($path){
+		 $path = Storage::disk('s3')->putFile('/', $upload_image, 'public');
+    // ファイル名を指定する場合はputFileAsを利用する
+    // $path = Storage::disk('s3')->putFileAs('/', $file, 'hoge.jpg', 'public');
+    if($path){
 				// UploadImage::create([
 				$request->user()->uploadimages()->create([
 					"file_name" => $upload_image->getClientOriginalName(),

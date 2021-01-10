@@ -14,7 +14,7 @@
             <!--<a class="" href="{{ route('tasks.index',$image->id) }}">タスク一覧画面へ</a>-->
             <a class="btn btn-success" href="{{ route('tasks.index',$image->id) }}">タスク登録画面へ</a>
             <div class="mx-2">
-	            <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"　alt="建設現場の写真"/>
+	            <img src="{{ Storage::disk('s3')->url($image->file_path) }}" style="width:100%;"　alt="建設現場の写真"/>
 	            <!--<p>{{ $image->file_name }}</p>-->
     	        <div class="d-flex flex-row .justify-content-between p-2 bd-highlight ">
         	        <div class="d-inline-flex col-md-6">
