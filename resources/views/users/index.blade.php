@@ -13,10 +13,13 @@
               {{method_field('get')}}
                 <div class="form-group">
                     <label>名前</label>
+                    
                     <input type="text" class="form-control" placeholder="検索したい名前を入力してください" name="name" value="">
                 </div>
-                <button type="submit" class="btn btn-primary col-md-5">検索</button>
+                <button type="submit" class="btn btn-primary col-md-4">検索</button>
+                <!--<div class="mt-3"><h6>業者表示数：{{count($users)}}件</h6></div>-->
             </form>
+            
         </div>
         @if(session('flash_message'))
         <div class="alert alert-primary" role="alert" style="margin-top:50px;">{{ session('flash_message')}}</div>

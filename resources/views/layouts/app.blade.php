@@ -23,6 +23,8 @@
 
         {{-- ナビゲーションバー --}}
         @include('navbar')
+        
+        
 
         <div class="container">
             {{-- エラーメッセージ --}}
