@@ -83,7 +83,7 @@ class RegisterUsersController extends Controller
     
             event(new Registered($user = $this->create($request->all())));
     
-    
+            session()->flash('flashmessage', '登録が完了しました');
             return redirect("/list");
         }
     
