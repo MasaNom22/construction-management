@@ -63,7 +63,10 @@ Route::group(['middleware' => 'admin_auth'], function () {
 Route::get('/', 'ImageListController@show')->name("image_list");;
 });
 Route::get('/home', 'HomeController@index')->name('home');
-});
+
 //ユーザー一覧と検索画面
 Route::get('/users','UsersController@index')->name("users.index");
+//ユーザー削除
+Route::delete('/users/{user_id}','UsersController@destroy')->name("users.destroy");
 
+});
