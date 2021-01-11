@@ -27,23 +27,38 @@
             <div class="column col-md-8">
                 <div style="margin-top:50px;">
                     <div class="d-inline-flex col-md-4">
-                    <h2>下請業者一覧</h2>
+                        <h2>下請業者一覧</h2>
                     </div>
                     <div class="d-inline-flex col-md-4">
-	        <button class="btn btn-primary">{!! link_to_route('signup.get2', '下請業者登録', [], ['class' => 'text-white']) !!}</button>
-            </div>
+	                    <button class="btn btn-primary">{!! link_to_route('signup.get2', '下請業者登録', [], ['class' => 'text-white']) !!}</button>
+                    </div>
                     
                         <table class="table">
+                            <thead>
                             <tr>
-                                <th>業者名</th>
+                                <th class="">業者名</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
+                            </thead>
                             @foreach($users as $user)
                             <tr>
                                 <td>{{$user->name}}</td>
+                                <td></td>
+                                <td></td>
+                            
+                                {{-- タスク削除フォーム --}}
+                                  <td>{!! Form::model($user, ['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
+                                      {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+                                  {!! Form::close() !!}</td>
+                            
+          
                             </tr>
                             @endforeach
                         </table>
                             {{ $users->links() }}
+                            
                 </div>
             </div>
         </div>
