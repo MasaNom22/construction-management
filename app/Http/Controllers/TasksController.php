@@ -31,7 +31,7 @@ class TasksController extends Controller
         
         // 選ばれたフォルダに紐づくタスクを取得する
         // $tasks = Task::where('upload_image_id', $current_folder->id)->get();
-        $tasks = $current_folder->tasks()->get();
+        $tasks = $current_folder->tasks()->orderBy('due_day', 'asc')->paginate(5);
         
         // タスク一覧ビューでそれを表示
         return view('tasks/index', [

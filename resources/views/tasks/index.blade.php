@@ -74,12 +74,13 @@
           {!! Form::close() !!}</td>
           {{-- タスク削除フォーム --}}
           <td>{!! Form::model($task, ['route' => ['tasks.destroy', $task->upload_image_id ,$task->id], 'method' => 'delete']) !!}
-              {!! Form::submit('削除', ['class' => 'btn btn-success btn-sm']) !!}
+              {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
           {!! Form::close() !!}</td>
         </tr>
       @endforeach
     </tbody>
   </table>
+  {{ $tasks->links() }}
 </div>
 </div>
 
