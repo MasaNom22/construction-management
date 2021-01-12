@@ -66,6 +66,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //ユーザー一覧と検索画面
 Route::get('/users','UsersController@index')->name("users.index");
+//タスク編集
+Route::get('/users/{id}/edit', 'UsersController@showEditForm')->name('users.edit');
+Route::post('/users/{id}/edit', 'UsersController@edit');
 //ユーザー削除
 Route::delete('/users/{user_id}','UsersController@destroy')->name("users.destroy");
 
