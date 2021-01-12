@@ -63,6 +63,7 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                                <h5>ゲストログインボタンからお入りください</h5>
                             </div>
                         </div>
                     </form>
