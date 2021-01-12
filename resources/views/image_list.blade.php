@@ -6,6 +6,11 @@
 
 <div class=container>
     <div class=row>
+        @if(count($images) == 0)
+        <div class="">
+	        <a class="btn btn-success" href="{!! route('upload_form') !!}">画像登録</a>
+        </div>
+        @else
         @foreach($images as $image)
         <div style="" class="col-md-6 mt-4 mb-4">
             <h4>現場名: {{ $image->title }}</h4>
@@ -29,9 +34,9 @@
                     </div>
                 </div>
             </div>
-            
         </div>
         @endforeach
+        @endif
     </div>
 </div>
 @endsection
