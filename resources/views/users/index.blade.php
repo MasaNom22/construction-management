@@ -40,14 +40,20 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             @foreach($users as $user)
                             <tr>
                                 <td>{{$user->name}}</td>
+                                <td></td><td></td>
+                                <td></td><td></td>
                                 <td></td>
-                                <td></td>
-                            
+                                {{-- タスク編集フォーム --}}
+                                <td>{!! Form::model($user, ['route' => ['users.edit', $user->id], 'method' => 'get']) !!}
+                                    {!! Form::submit('編集', ['class' => 'btn btn-success btn-sm']) !!}
+                                    {!! Form::close() !!}</td>
+                                                    
                                 {{-- タスク削除フォーム --}}
                                   <td>{!! Form::model($user, ['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                                       {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}

@@ -29,4 +29,27 @@ class UsersController extends Controller
 		$users = User::where('role','member')->paginate(5);
 		return redirect()->route('users.index',['users' => $users]);
 	}
+	
+	public function showEditForm($id)
+    {
+    $user = User::find($id);
+
+        return view('users/edit', [
+            'user' => $user,
+        ]);
+    }
+    
+    public function edit($id, Request $request)
+    {
+        //ユーザーを特定
+        $user = User::find($id);
+        //ユーザーの上書き
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+        
+        return redirect()->route('users.index', [
+            'id' => $user->id,
+        ]);
+    }
 }
