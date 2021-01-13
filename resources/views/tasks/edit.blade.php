@@ -13,19 +13,19 @@
       <div class="col col-md-offset-3 col-md-6">
         <nav class="panel panel-default">
           <div class="panel-heading mb-3">タスクを編集する</div>
-          <div class="panel-body">
-            @if($errors->any())
-              <div class="alert alert-danger">
-                @foreach($errors->all() as $message)
-                  <p>{{ $message }}</p>
-                @endforeach
-              </div>
-            @endif
-            <form
-                action="{{ route('tasks.edit', ['id' => $task->upload_image_id, 'task_id' => $task->id]) }}"
-                method="POST"
-            >
-              @csrf
+            <div class="panel-body">
+              @if($errors->any())
+                <div class="alert alert-danger">
+                  @foreach($errors->all() as $message)
+                    <p>{{ $message }}</p>
+                  @endforeach
+                </div>
+              @endif
+              <form
+                  action="{{ route('tasks.edit', ['id' => $task->upload_image_id, 'task_id' => $task->id]) }}"
+                  method="POST"
+              >
+                @csrf
               <div class="form-group">
                 <label for="title">タイトル</label>
                 <input type="text" class="form-control" name="title" id="title"
