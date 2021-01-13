@@ -61,7 +61,7 @@ class UploadImageController extends Controller
 		if($upload_image) {
 		 $path = Storage::disk('s3')->putFile('/', $upload_image, 'public');
     // ファイル名を指定する場合はputFileAsを利用する
-    // $path = Storage::disk('s3')->putFileAs('/', $file, 'hoge.jpg', 'public');
+    // $path = Storage::disk('s3')->putFileAs('/', $file, '.jpg', 'public');
     if($path){
 				// UploadImage::create([
 				$request->user()->uploadimages()->create([
