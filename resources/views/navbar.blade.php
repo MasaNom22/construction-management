@@ -16,7 +16,7 @@
                     </li>
                     {{-- チャットページへのリンク --}}
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('chats.index') }}"><i class="fas fa-user-plus mr-1"></i>チャット</a>
+                    <a class="nav-link" href="{{ route('chats.index') }}"><i class="fas fa-bell mr-1"></i>チャット</a>
                     </li>
                     {{-- 業者登録ページへのリンク --}}
                     <li class="nav-item">
@@ -28,7 +28,7 @@
                     </li>
                     {{-- 画像一覧ページへのリンク --}}
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('image_list') }}"><i class=""></i>画像確認</a>
+                    <a class="nav-link" href="{{ route('image_list') }}"><i class="fas fa-book-reader mr-1"></i>画像確認</a>
                     </li>
                     
                     {{-- ログアウトへのリンク --}}
