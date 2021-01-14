@@ -71,5 +71,9 @@ Route::get('/users/{id}/edit', 'UsersController@showEditForm')->name('users.edit
 Route::post('/users/{id}/edit', 'UsersController@edit');
 //ユーザー削除
 Route::delete('/users/{user_id}','UsersController@destroy')->name("users.destroy");
+//コメント投稿
+Route::post('/chat/add', 'ChatsController@add')->name("chats.post");
 
+Route::get('/result/ajax', 'ChatsController@getData');
+Route::get('/chats', 'ChatsController@index')->name("chats.index");
 });

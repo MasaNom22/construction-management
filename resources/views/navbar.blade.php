@@ -14,6 +14,10 @@
                     <li class="nav-item">
                     <span class="nav-link">ようこそ、 {{ Auth::user()->name }}さん</span>
                     </li>
+                    {{-- チャットページへのリンク --}}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('chats.index') }}"><i class="fas fa-user-plus mr-1"></i>チャット</a>
+                    </li>
                     {{-- 業者登録ページへのリンク --}}
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user-plus mr-1"></i>下請業者検索</a>
