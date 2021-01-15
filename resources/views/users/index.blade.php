@@ -30,7 +30,8 @@
                         <h2>下請業者一覧</h2>
                     </div>
                     <div class="d-inline-flex col-md-4">
-	                    <button class="btn btn-primary">{!! link_to_route('signup.get2', '下請業者登録', [], ['class' => 'text-white']) !!}</button>
+	                    <!--<button class="btn btn-primary">{!! link_to_route('signup.get2', '下請業者登録', [], ['class' => 'text-white']) !!}</button>-->
+	                    <a class="btn btn-primary" href={!! route('signup.get2') !!}>下請業者登録</a>
                     </div>
                     
                         <table class="table">
