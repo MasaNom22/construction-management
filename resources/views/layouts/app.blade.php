@@ -18,8 +18,8 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
         <link href="{{ asset('css/view.css') }}" rel="stylesheet">
         <!-- ajax -->
-        <script src="{{ asset('js/app.js') }}" ></script>
-        <!--<script src="{{ asset('js/app.js') }}" defer></script>-->
+        <!--<script src="{{ asset('js/app.js') }}" ></script>-->
+        <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     </head>
