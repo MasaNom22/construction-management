@@ -63,7 +63,6 @@ Route::group(['middleware' => 'admin_auth'], function () {
 Route::get('/', 'ImageListController@show')->name("image_list");;
 });
 Route::get('/home', 'HomeController@index')->name('home');
-
 //ユーザー一覧と検索画面
 Route::get('/users','UsersController@index')->name("users.index");
 //タスク編集
@@ -71,9 +70,9 @@ Route::get('/users/{id}/edit', 'UsersController@showEditForm')->name('users.edit
 Route::post('/users/{id}/edit', 'UsersController@edit');
 //ユーザー削除
 Route::delete('/users/{user_id}','UsersController@destroy')->name("users.destroy");
-//コメント投稿
+//チャットコメント投稿
 Route::post('/chat/add', 'ChatsController@add')->name("chats.post");
-
 Route::get('/result/ajax', 'ChatsController@getData');
+//チャット一覧画面
 Route::get('/chats', 'ChatsController@index')->name("chats.index");
 });
