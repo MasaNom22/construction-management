@@ -26,5 +26,5 @@
 </form>
 @endsection
 @section('js')
-<script src="{{ asset('js/comment.js') }}"></script>
+<script src="{{ asset('js/comment.js') }}" defer></script>
 @endsection
