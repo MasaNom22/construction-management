@@ -25,17 +25,12 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 //ゲストログイン
 // Route::get('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
-
-# ゲストユーザーログイン
+// ゲストユーザーログイン
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
-
 //ログイン状態で使用可能
 Route::group(['middleware' => 'auth'], function() {
-
 //画像投稿画面
-Route::get('/form', 
-	[App\Http\Controllers\UploadImageController::class, "show"]
-	)->name("upload_form");
+Route::get('/form', 'UploadImageController@show')->name("upload_form");
 //画像アップロード
 Route::post('/upload', 'UploadImageController@upload')->name("upload_image");
 //画像削除
@@ -60,7 +55,7 @@ Route::delete('/list/{id}/tasks/{task_id}', 'TasksController@destroy')->name("ta
 //カレンダー
 //画像表示 トップページ
 Route::group(['middleware' => 'admin_auth'], function () {
-Route::get('/', 'ImageListController@show')->name("image_list");;
+Route::get('/', 'ImageListController@show')->name("image_list");
 });
 Route::get('/home', 'HomeController@index')->name('home');
 //ユーザー一覧と検索画面
