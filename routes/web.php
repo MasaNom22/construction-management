@@ -67,7 +67,9 @@ Route::post('/users/{id}/edit', 'UsersController@edit');
 Route::delete('/users/{user_id}','UsersController@destroy')->name("users.destroy");
 //チャットコメント投稿
 Route::post('/chat/add', 'ChatsController@add')->name("chats.post");
+Route::group(['https'], function(){
 Route::get('/result/ajax', 'ChatsController@getData');
+});
 //チャット一覧画面
 Route::get('/chats', 'ChatsController@index')->name("chats.index");
 });
