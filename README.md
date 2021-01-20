@@ -6,7 +6,8 @@
 ## 使用技術
 - php(7.3.24)
 - Laravel Framework(6.20.9)
-- AWS:S3
+- AWS:S3・EC2
+- MySQL・PostgreSQL(Heroku版)
 
 
 ## 機能
