@@ -60,7 +60,7 @@ Route::get('/', 'ImageListController@show')->name("image_list");
 Route::get('/home', 'HomeController@index')->name('home');
 //ユーザー一覧と検索画面
 Route::get('/users','UsersController@index')->name("users.index");
-//タスク編集
+//ユーザー編集
 Route::get('/users/{id}/edit', 'UsersController@showEditForm')->name('users.edit');
 Route::post('/users/{id}/edit', 'UsersController@edit');
 //ユーザー削除
