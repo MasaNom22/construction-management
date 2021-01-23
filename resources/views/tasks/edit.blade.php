@@ -37,6 +37,7 @@
                        value="{{ old('content') ?? $task->content }}" />
               </div>
               <div class="form-group">
+                //ドロップダウンリスト
                 <label for="status">状態</label>
                 <select name="status" id="status" class="form-control">
                   @foreach(\App\Task::STATUS as $key => $val)

@@ -8,10 +8,10 @@
 - Laravel Framework(6.20.9)
 - AWS:S3・EC2
 - MySQL・PostgreSQL(Heroku版)
-
+- JavaScriptライブラリflatpickr(カレンダー機能)
 
 ## 機能
-- 管理者としてログインできます。
+- 管理者として登録・ログインできます。
 - ゲストログイン機能
 - 建築現場の画像投稿機能・削除機能
 - 画像の説明文書の編集機能
