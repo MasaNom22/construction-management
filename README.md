@@ -6,9 +6,10 @@
 ## 使用技術
 - php(7.3.24)
 - Laravel Framework(6.20.9)
-- AWS:S3・EC2
+- AWS:S3・EC2・Route 53
 - MySQL・PostgreSQL(Heroku版)
-- JavaScriptライブラリflatpickr(カレンダー機能)
+- JavaScriptライブラリflatpickr(期限日のカレンダー機能)
+- Ajax(チャット画面)
 
 ## 機能
 - 管理者として登録・ログインできます。
