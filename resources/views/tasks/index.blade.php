@@ -34,7 +34,7 @@
                         @else
                         @endif
                             <div class="text-right">
-                                <a href="{{ route('tasks.create', ['id' => $current_folder_id]) }}" class="btn btn-success">
+                                <a href="{{ route('tasks.create', ['id' => $current_image_id]) }}" class="btn btn-success">
                                   タスクを追加する
                                 </a>
                             </div>

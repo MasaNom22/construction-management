@@ -23,20 +23,20 @@ class TasksController extends Controller
 		$uploads = UploadImage::all();
 		$uploads1 = UploadImage::find($id);
 		
-		    // 選ばれたフォルダを取得する
-        $current_folder = UploadImage::find($id);
+		// 選ばれた画像のを取得する
+        $current_image = UploadImage::find($id);
         
         // 関係するモデルの件数をロード
         $uploads1->loadRelationshipCounts();
         
-        // 選ばれたフォルダに紐づくタスクを取得する
+        // 選ばれた画像に紐づくタスクを取得する
         // $tasks = Task::where('upload_image_id', $current_folder->id)->get();
-        $tasks = $current_folder->tasks()->orderBy('due_day', 'asc')->paginate(5);
+        $tasks = $current_image->tasks()->orderBy('due_day', 'asc')->paginate(5);
         
         // タスク一覧ビューでそれを表示
         return view('tasks/index', [
             'images' => $uploads,
-            'current_folder_id' => $current_folder->id,
+            'current_image_id' => $current_image->id,
             'tasks' => $tasks,
             'picture_id' => $uploads1,
         ]);
@@ -45,7 +45,7 @@ class TasksController extends Controller
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
     public function create($id, CreateTasks $request)
 {
-    $current_folder = UploadImage::find($id);
+    $current_image = UploadImage::find($id);
     $task = new Task();
     $task->title = $request->title;
     $task->content = $request->content;
@@ -67,11 +67,11 @@ class TasksController extends Controller
        }
         
         
-    $current_folder->tasks()->save($task);
+    $current_image->tasks()->save($task);
     
     $task->tags()->attach($tags_id);
     return redirect()->route('tasks.index', [
-        'id' => $current_folder->id,
+        'id' => $current_image->id,
     ]);
 }
     
@@ -81,7 +81,7 @@ class TasksController extends Controller
         $image = UploadImage::find($id);
         return view('tasks/create', [
             'image' => $image,
-            'folder_id' => $id
+            'image_id' => $id
         ]);
     }
     
