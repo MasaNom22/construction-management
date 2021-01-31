@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\User; 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -17,6 +18,7 @@ class ImageListController extends TestCase
         $response->assertRedirect(route('login'));
     }
     //ログイン時
+    use DatabaseTransactions;
     public function testExample()
     {
         $user = factory(User::class)->create();
