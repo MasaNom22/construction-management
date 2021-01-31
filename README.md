@@ -8,6 +8,7 @@
 - Laravel Framework(6.20.9)
 - AWS:S3・EC2・Route 53
 - MySQL・PostgreSQL(Heroku版)
+- PHPUnit 9.5.1
 - JavaScriptライブラリflatpickr(期限日のカレンダー機能)
 - Ajax(チャット画面)
 
@@ -19,6 +20,5 @@
 - 画像ごとにタスクの表示・登録・編集・削除機能あり
 - メンバー（下請業者）登録・検索機能
 - チャット画面追加(非同期通信)
-- テストコード(表示面)
 - GitHubにpushすると自動でHerokuにデプロイできるようにした(CDパイプライン)
 
