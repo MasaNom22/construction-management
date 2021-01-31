@@ -44,34 +44,34 @@ class TasksController extends Controller
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
     public function create($id, CreateTasks $request)
     {
-    $current_image = UploadImage::find($id);
-    $task = new Task();
-    $task->title = $request->title;
-    $task->content = $request->content;
-    $task->due_day = $request->due_day;
+        $current_image = UploadImage::find($id);
+        $task = new Task();
+        $task->title = $request->title;
+        $task->content = $request->content;
+        $task->due_day = $request->due_day;
     
-    // preg_match_allを使用して#タグのついた文字列を取得している
-       preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
-       $tags = [];
-       // $matchの中でも#が付いていない方を使用する(配列番号で言うと1)
-       foreach($match[1] as $tag) {
+        // preg_match_allを使用して#タグのついた文字列を取得している
+        preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
+        $tags = [];
+        // $matchの中でも#が付いていない方を使用する(配列番号で言うと1)
+        foreach($match[1] as $tag) {
            // firstOrCreateで重複を防ぎながらタグを作成している。
            $record = Tag::firstOrCreate(['name' => $tag]);
            array_push($tags, $record);
-       }
+        }
 
-       $tags_id = [];
-       foreach($tags as $tag) {
+        $tags_id = [];
+        foreach($tags as $tag) {
            array_push($tags_id, $tag->id);
        }
         
         
-    $current_image->tasks()->save($task);
+        $current_image->tasks()->save($task);
     
-    $task->tags()->attach($tags_id);
-    return redirect()->route('tasks.index', [
-        'id' => $current_image->id,
-        ]);
+        $task->tags()->attach($tags_id);
+        return redirect()->route('tasks.index', [
+            'id' => $current_image->id,
+            ]);
     }
     
     // getでmessages/idにアクセスされた場合の「取得表示処理」
@@ -86,7 +86,7 @@ class TasksController extends Controller
     
     public function showEditForm($id, $task_id)
     {
-    $task = Task::find($task_id);
+        $task = Task::find($task_id);
 
         return view('tasks.edit', [
             'task' => $task,
