@@ -14,6 +14,14 @@ class ChatControllerTest extends TestCase
      *
      * @return void
      */
+     // 未ログイン時
+    public function testGuestCreate()
+    {
+        $response = $this->get(route('chats.index'));
+
+        $response->assertRedirect(route('login'));
+    }
+    //ログイン時
     public function testExample()
     {
         $user = factory(User::class)->create();
