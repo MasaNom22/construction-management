@@ -20,14 +20,13 @@ class TasksController extends Controller
     public function index($id)
     {
          //アップロードした画像を取得
-		$uploads = UploadImage::all();
-		$uploads1 = UploadImage::find($id);
+		$image = UploadImage::all();
 		
 		// 選ばれた画像のを取得する
         $current_image = UploadImage::find($id);
         
         // 関係するモデルの件数をロード
-        $uploads1->loadRelationshipCounts();
+        $current_image->loadRelationshipCounts();
         
         // 選ばれた画像に紐づくタスクを取得する
         // $tasks = Task::where('upload_image_id', $current_folder->id)->get();
@@ -35,16 +34,16 @@ class TasksController extends Controller
         
         // タスク一覧ビューでそれを表示
         return view('tasks/index', [
-            'images' => $uploads,
+            'images' => $image,
             'current_image_id' => $current_image->id,
             'tasks' => $tasks,
-            'picture_id' => $uploads1,
+            'picture_id' => $current_image,
         ]);
     }
     
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
     public function create($id, CreateTasks $request)
-{
+    {
     $current_image = UploadImage::find($id);
     $task = new Task();
     $task->title = $request->title;
@@ -72,14 +71,14 @@ class TasksController extends Controller
     $task->tags()->attach($tags_id);
     return redirect()->route('tasks.index', [
         'id' => $current_image->id,
-    ]);
-}
+        ]);
+    }
     
     // getでmessages/idにアクセスされた場合の「取得表示処理」
     public function showCreateForm($id)
     {
         $image = UploadImage::find($id);
-        return view('tasks/create', [
+        return view('tasks.create', [
             'image' => $image,
             'image_id' => $id
         ]);
@@ -89,24 +88,19 @@ class TasksController extends Controller
     {
     $task = Task::find($task_id);
 
-        return view('tasks/edit', [
+        return view('tasks.edit', [
             'task' => $task,
         ]);
     }
     
     public function edit($id,$task_id, EditTasks $request)
     {
-        // 1
+        // タスクのIDを取得
         $task = Task::find($task_id);
-    
-        // 2
-        $task->title = $request->title;
-        $task->content = $request->content;
-        $task->status = $request->status;
-        $task->due_day = $request->due_day;
+        //タスクを編集　タスクモデルのfillable
+        $task->fill($request->all());
         $task->save();
     
-        // 3
         return redirect()->route('tasks.index', [
             'id' => $task->upload_image_id,
         ]);
@@ -116,21 +110,18 @@ class TasksController extends Controller
     {
         //画像ごとのタスクを一括更新
         Task::where('upload_image_id',$id)->update(['status' => '3']);
-        $task = Task::where('upload_image_id',$id)->first();
-
-    
-        // 3
+        //タスク一覧画面へリダイレクト
         return redirect()->route('tasks.index', [
-            'id' => $task->upload_image_id,
+            'id' => $id,
         ]);
     }
     
     public function destroy($id,$task_id){
 		$deletetask = Task::find($task_id);
-		$redirect = Task::find($task_id);
 		$deletetask->delete();
+		$redirect_task = Task::find($task_id);
 		return redirect()->route('tasks.index', [
-            'id' => $redirect->upload_image_id,
+            'id' => $redirect_task->upload_image_id,
         ]);
 	}
 }
