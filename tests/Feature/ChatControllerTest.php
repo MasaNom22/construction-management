@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\User;
+use App\Comment;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -22,6 +24,7 @@ class ChatControllerTest extends TestCase
         $response->assertRedirect(route('login'));
     }
     //ログイン時
+    use DatabaseTransactions;
     public function testExample()
     {
         $user = factory(User::class)->create();
@@ -32,4 +35,10 @@ class ChatControllerTest extends TestCase
         $response->assertStatus(200)
         ->assertViewIs('chats.index');
     }
+    
+    // public function testChatAdd()
+    // {
+    //     $comment = factory(Comment::class)->create();
+    //       $this->assertDatabaseHas('comments', $comment);
+    // }
 }
