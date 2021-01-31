@@ -30,21 +30,21 @@ class ChatsController extends Controller
     }
     
     public function add(Request $request)
-{
-    $user = Auth::user();
-    $comment = $request->input('comment');
-    Comment::create([
-        'user_id' => $user->id,
-        'name' => $user->name,
-        'comment' => $comment
-    ]);
-    return redirect()->route('chats.index');
-}
+    {
+        $user = Auth::user();
+        $comment = $request->input('comment');
+        Comment::create([
+            'user_id' => $user->id,
+            'name' => $user->name,
+            'comment' => $comment
+        ]);
+        return redirect()->route('chats.index');
+    }
 
     public function getData()
-{
-    $comments = Comment::orderBy('created_at', 'desc')->get();
-    $json = ["comments" => $comments];
-    return response()->json($json);
-}
+    {
+        $comments = Comment::orderBy('created_at', 'desc')->get();
+        $json = ["comments" => $comments];
+        return response()->json($json);
+    }
 }
