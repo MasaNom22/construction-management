@@ -31,8 +31,8 @@ class ImageListController extends Controller
 		DB::beginTransaction();
 		$deletePictures->delete();
 		try {
-		Storage::disk('s3')->delete($deleteName);
-		DB::commit();
+			Storage::disk('s3')->delete($deleteName);
+			DB::commit();
 		} catch (Exception $exception) {
 			DB::rollBack();
 		}

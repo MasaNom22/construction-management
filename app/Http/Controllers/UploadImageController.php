@@ -25,7 +25,10 @@ class UploadImageController extends Controller
     public function edit($id, Request $request)
     {
         $image = UploadImage::find($id);
-    	
+    	$request->validate([
+    		'title' => 'required',
+			'content' => 'required'
+		]);
     	$image->title = $request->title;
     	$image->content = $request->content;
         $image->save();
