@@ -118,8 +118,8 @@ class TasksController extends Controller
     
     public function destroy($id,$task_id){
 		$deletetask = Task::find($task_id);
-		$deletetask->delete();
 		$redirect_task = Task::find($task_id);
+		$deletetask->delete();
 		return redirect()->route('tasks.index', [
             'id' => $redirect_task->upload_image_id,
         ]);
