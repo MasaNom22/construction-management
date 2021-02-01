@@ -24,10 +24,10 @@ class UsersController extends Controller
   
   public function destroy($id,Request $request)
   {
-		$deleteuser = User::find($id);
-		$deleteuser->delete();
-		$users = User::where('role','member')->paginate(5);
-		return redirect()->route('users.index',['users' => $users]);
+		  $deleteuser = User::find($id);
+		  $deleteuser->delete();
+		  $users = User::where('role','member')->paginate(5);
+		  return redirect()->route('users.index',['users' => $users]);
 	}
 	
 	public function showEditForm($id)
