@@ -49,3 +49,4 @@ class ImageTest extends TestCase
     }
     
 }
+
