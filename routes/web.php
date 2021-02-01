@@ -16,9 +16,7 @@
 //新規登録(管理者)
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
-//新規登録(ユーザー)
-Route::get('signup/users', 'Auth\RegisterUsersController@showRegistrationForm2')->name('signup.get2');
-Route::post('signup/users', 'Auth\RegisterUsersController@register2')->name('signup.post2');
+
 // 認証
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
@@ -29,6 +27,9 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 //ログイン状態で使用可能
 Route::group(['middleware' => 'auth'], function() {
+    //新規登録(ユーザー)
+Route::get('signup/users', 'Auth\RegisterUsersController@showRegistrationForm2')->name('signup.get2');
+Route::post('signup/users', 'Auth\RegisterUsersController@register2')->name('signup.post2');
     //画像投稿画面
     Route::get('/form', 'UploadImageController@show')->name("upload_form");
     //画像アップロード
