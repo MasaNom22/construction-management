@@ -36,9 +36,30 @@ class ChatControllerTest extends TestCase
         ->assertViewIs('chats.index');
     }
     
+    // use DatabaseTransactions;
     // public function testChatAdd()
     // {
-    //     $comment = factory(Comment::class)->create();
-    //       $this->assertDatabaseHas('comments', $comment);
+    //     $user = factory(User::class)->create();
+        
+    //     $name = $user->name;
+    //     $user_id = $user->id;
+    //     $comment = "テストコメント";
+        
+    //     $response = $this->actingAs($user)
+    //     ->post(route('chats.post',
+    //     [
+    //         'name' => $name,
+    //         'user_id' => $user_id,
+    //         'comment' => $comment,
+    //         ]
+    //     ));
+        
+    //   $this->assertDatabaseHas('comments', [
+    //         'name' => $name,
+    //         'user_id' => $user_id,
+    //         'comment' => $comment,
+    //     ]);
+        
+    //     $response->assertRedirect(route('chats.index'));
     // }
 }
