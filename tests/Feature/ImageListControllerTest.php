@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class ImageListController extends TestCase
 {
-     // 未ログイン時
+    // 未ログイン時
     public function testGuestCreate()
     {
         $response = $this->get(route('image_list'));
@@ -29,5 +29,25 @@ class ImageListController extends TestCase
 
         $response->assertStatus(200)
             ->assertViewIs('image_list');
+    }
+    
+    // 未ログイン時
+    public function testGuestUpload()
+    {
+        $response = $this->get(route('upload_form'));
+
+        $response->assertRedirect(route('login'));
+    }
+    //ログイン時
+    use DatabaseTransactions;
+    public function testAuthUpload()
+    {
+        $user = factory(User::class)->create();
+        
+        $response = $this->actingAs($user)
+        ->get(route('upload_form'));
+
+        $response->assertStatus(200)
+            ->assertViewIs('upload_form');
     }
 }
