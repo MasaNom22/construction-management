@@ -36,27 +36,30 @@ class ChatControllerTest extends TestCase
         ->assertViewIs('chats.index');
     }
     
+    // use RefreshDatabase;
     // use DatabaseTransactions;
     // public function testChatAdd()
     // {
-    //     $user = factory(User::class)->create();
+        //エラーが起きても例外処理をしない
+        // $this->withoutExceptionHandling();
+        // $user = factory(User::class)->create();
         
-    //     $name = $user->name;
-    //     $user_id = $user->id;
-    //     $comment = "テストコメント";
+        // $name = $user->name;
+        // $user_id = $user->id;
+        // $comment = "テストコメント";
         
-    //     $response = $this->actingAs($user)
-    //     ->post(route('chats.post',
-    //     [
-    //         'name' => $name,
-    //         'user_id' => $user_id,
+        // $response = $this->actingAs($user)
+        // ->post(route('chats.post',
+        // [
+            // 'name' => $name,
+            // 'user_id' => $user_id,
     //         'comment' => $comment,
     //         ]
     //     ));
         
     //   $this->assertDatabaseHas('comments', [
-    //         'name' => $name,
-    //         'user_id' => $user_id,
+            // 'name' => $name,
+            // 'user_id' => $user_id,
     //         'comment' => $comment,
     //     ]);
         
