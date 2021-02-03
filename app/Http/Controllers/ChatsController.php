@@ -32,6 +32,7 @@ class ChatsController extends Controller
     public function add(Request $request)
     {
         $user = Auth::user();
+        $comment="";
         $comment = $request->input('comment');
         Comment::create([
             'user_id' => $user->id,
