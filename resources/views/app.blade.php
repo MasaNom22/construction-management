@@ -23,6 +23,7 @@
         {{-- ナビゲーションバー --}}
         @include('navbar')
         @if(Session::has('flashmessage'))
+        
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <script>
   $(window).load(function() {
