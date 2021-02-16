@@ -25,12 +25,12 @@
     </div>
 </form>
 {{-- 投稿削除フォーム --}}
-        <form action="{{route('chats.destroy')}}" method="post" class="float-right">
-            @csrf
-                @method('delete')
-                <input type="submit" value="全削除" class="btn btn-danger" onclick='return confirm("削除しますか？");'>
-                </div>
-        </form>
+        <!--<form action="{{route('chats.destroy')}}" method="post" class="float-right">-->
+        <!--    @csrf-->
+        <!--        @method('delete')-->
+        <!--        <input type="submit" value="全削除" class="btn btn-danger" onclick='return confirm("削除しますか？");'>-->
+        <!--        </div>-->
+        <!--</form>-->
             
 @endsection
 @section('js')
