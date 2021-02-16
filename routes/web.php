@@ -69,7 +69,8 @@ Route::post('signup/users', 'Auth\RegisterUsersController@register2')->name('sig
     //チャットコメント投稿
     Route::post('/chat/add', 'ChatsController@add')->name("chats.post");
     Route::get('/result/ajax', 'ChatsController@getData');
-    
+    //ユーザー削除
+    Route::delete('/chats/','ChatsController@destroy')->name("chats.destroy");
     //チャット一覧画面
     Route::get('/chats', 'ChatsController@index')->name("chats.index");
 });
