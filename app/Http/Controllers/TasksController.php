@@ -19,8 +19,12 @@ class TasksController extends Controller
     // getでtasks/にアクセスされた場合の「一覧表示処理」
     public function index($id)
     {
+        // 認証済みユーザを取得
+        $user = \Auth::user();
+		//アップロードした画像を取得
+		$image = $user->uploadimages()->get();
          //アップロードした画像を取得
-		$image = UploadImage::all();
+// 		$image = UploadImage::all();
 		
 		// 選ばれた画像のを取得する
         $current_image = UploadImage::find($id);
