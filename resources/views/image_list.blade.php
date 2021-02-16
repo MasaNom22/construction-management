@@ -28,7 +28,7 @@
                     </div>
                     <div class="d-inline-flex col-md-6">
             	        {{-- メッセージ削除フォーム --}}
-                        {!! Form::model($image, ['route' => ['delete_image', $image->id], 'method' => 'delete']) !!}
+                        {!! Form::model(['route' => ['chats.destroy'], 'method' => 'delete']) !!}
                             {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
                         {!! Form::close() !!}
                     </div>
