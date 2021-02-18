@@ -34,26 +34,30 @@ Route::post('signup/users', 'Auth\RegisterUsersController@register2')->name('sig
     Route::get('/form', 'UploadImageController@show')->name("upload_form");
     //画像アップロード
     Route::post('/upload', 'UploadImageController@upload')->name("upload_image");
+    
+Route::prefix('list')->group(function () {
     //画像削除
-    Route::delete('/list/{id}', 'ImageListController@destroy')->name("delete_image");
-    //タスク編集
-    Route::get('/list/{id}/edit', 'UploadImageController@showEditForm')->name('image.edit');
-    Route::post('/list/{id}/edit', 'UploadImageController@edit');
+    Route::delete('{id}', 'ImageListController@destroy')->name("delete_image");
+//タスク編集
+    Route::get('{id}/edit', 'UploadImageController@showEditForm')->name('image.edit');
+    Route::post('{id}/edit', 'UploadImageController@edit');
     //画像表示
-    Route::get('/list', 'ImageListController@show')->name("image_list");
+    // Route::get('/', 'ImageListController@show')->name("image_list");
     //タスク
-    Route::get('/list/{id}/tasks', 'TasksController@index')->name('tasks.index');
+    Route::get('{id}/tasks', 'TasksController@index')->name('tasks.index');
     //タスク作成
-    Route::get('/list/{id}/tasks/create', 'TasksController@showCreateForm')->name('tasks.create');
-    Route::post('/list/{id}/tasks/create', 'TasksController@create');
+    Route::get('{id}/tasks/create', 'TasksController@showCreateForm')->name('tasks.create');
+    Route::post('{id}/tasks/create', 'TasksController@create');
     //タスク編集
-    Route::get('/list/{id}/tasks/{task_id}/edit', 'TasksController@showEditForm')->name('tasks.edit');
-    Route::post('/list/{id}/tasks/{task_id}/edit', 'TasksController@edit');
+    Route::get('{id}/tasks/{task_id}/edit', 'TasksController@showEditForm')->name('tasks.edit');
+    Route::post('{id}/tasks/{task_id}/edit', 'TasksController@edit');
     //タスク一括更新
-    Route::put('/list/{id}/tasks', 'TasksController@statusedit')->name("tasks.statusedit");
+    Route::put('{id}/tasks', 'TasksController@statusedit')->name("tasks.statusedit");
     //タスク削除
-    Route::delete('/list/{id}/tasks/{task_id}', 'TasksController@destroy')->name("tasks.destroy");
-    //カレンダー
+    Route::delete('{id}/tasks/{task_id}', 'TasksController@destroy')->name("tasks.destroy");
+});
+
+
     //画像表示 トップページ
     Route::group(['middleware' => 'admin_auth'], function () {
     Route::get('/', 'ImageListController@show')->name("image_list");
