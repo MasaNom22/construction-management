@@ -10,7 +10,7 @@
 - MySQL・PostgreSQL(Heroku版)
 - PHPUnit 9.5.1
 - JavaScriptライブラリflatpickr(期限日のカレンダー機能)
-- Ajax(チャット画面)
+<!--- Ajax(チャット画面)-->
 
 ## 機能
 - 管理者として登録・ログインできます。
