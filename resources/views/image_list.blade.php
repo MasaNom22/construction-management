@@ -15,6 +15,7 @@
         <div style="" class="col-md-6 mt-4 mb-4">
             <h4>現場名: {{ $image->title }}</h4>
 	        <h5>施工内容: {{ $image->content }}</h5>
+	        <h5>管理者名: {{ $image->user->name }}</h5>
 	                    {{-- タスクリストへのリンク --}}
             <!--<a class="" href="{{ route('tasks.index',$image->id) }}">タスク一覧画面へ</a>-->
             <a class="btn btn-success" href="{{ route('tasks.index',$image->id) }}">タスク登録画面へ</a>
