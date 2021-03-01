@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\UploadImage;
 
+use App\Http\Requests\UploadImageRequest;
+
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\DB;
