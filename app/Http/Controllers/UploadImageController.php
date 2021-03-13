@@ -33,7 +33,7 @@ class UploadImageController extends Controller
     	$image->content = $request->content;
         $image->save();
         
-    	// session()->flash('flashmessage', '変更が完了しました');
+    	// session()->flash('flash_message', '変更が完了しました');
         return redirect()->route('image_list');
         
     }
