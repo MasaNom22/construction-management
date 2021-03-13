@@ -22,5 +22,4 @@
 - チャット画面追加(非同期通信)
 - GitHubにpushすると自動でHerokuにデプロイできるようにした(CDパイプライン)
 
-インフラ図
-https://github.com/MasaNom22/construction-management/blob/main/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E5%9B%B3.png?raw=true
+
