@@ -6,7 +6,7 @@
 ## 使用技術
 - php(7.3.24)
 - Laravel Framework(6.20.9)
-- AWS:S3(ファイルストレージ)・EC2(デプロイ先)・Route 53
+- AWS:S3(ファイルストレージ)・EC2(デプロイ先)・Route 53・ELB
 - MySQL・PostgreSQL(Heroku版)
 - PHPUnit 9.5.1
 - JavaScriptライブラリflatpickr(期限日のカレンダー機能)
