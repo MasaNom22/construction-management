@@ -31,7 +31,7 @@
 
         <div class="container">
             {{-- エラーメッセージ --}}
-            // @include('commons.error_messages')
+            <!--@include('commons.error_messages')-->
         </div>
             @yield('content')
             @yield('scripts')
