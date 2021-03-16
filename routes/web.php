@@ -74,7 +74,7 @@ Route::prefix('list')->group(function () {
     Route::post('/chat/add', 'ChatsController@add')->name("chats.post");
     Route::get('/result/ajax', 'ChatsController@getData');
     //ユーザー削除
-    Route::delete('/chats/','ChatsController@destroy')->name("chats.destroy");
+    Route::delete('/chats/delete','ChatsController@destroy')->name("chats.destroy");
     //チャット一覧画面
     Route::get('/chats', 'ChatsController@index')->name("chats.index");
 });
