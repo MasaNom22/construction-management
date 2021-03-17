@@ -6,9 +6,10 @@
 ## 使用技術
 - php(7.3.24)
 - Laravel Framework(6.20.9)
-- AWS:S3(ファイルストレージ)・EC2(デプロイ先)・Route 53・ELB
-- MySQL・PostgreSQL(Heroku版)
-- PHPUnit 9.5.1
+- AWS:EC2(デプロイ先)・Route 53(ドメイン設定)・S3(ファイルストレージ)
+- ・ELB(常時SSL化)・RDS
+- MySQL(8.0.20)・PostgreSQL(Heroku版)
+- PHPUnit(9.5.1)
 - JavaScriptライブラリflatpickr(期限日のカレンダー機能)
 <!--- Ajax(チャット画面)-->
 
@@ -19,7 +20,7 @@
 - 画像の説明文書の編集機能
 - 画像ごとにタスクの表示・登録・編集・削除機能あり
 - メンバー（下請業者）登録・検索・編集・削除機能
-- チャット画面追加(非同期通信)
+- チャット画面
 - GitHubにpushすると自動でHerokuにデプロイできるようにした(CDパイプライン)
 
 ## インフラ構成図
