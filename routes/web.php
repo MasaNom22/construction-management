@@ -42,7 +42,7 @@ Route::prefix('list')->group(function () {
     Route::get('{id}/edit', 'UploadImageController@showEditForm')->name('image.edit');
     Route::post('{id}/edit', 'UploadImageController@edit');
     //画像表示
-    // Route::get('/', 'ImageListController@show')->name("image_list");
+    Route::get('/', 'ImageListController@show')->name("image_list");
     //タスク
     Route::get('{id}/tasks', 'TasksController@index')->name('tasks.index');
     //タスク作成
