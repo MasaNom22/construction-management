@@ -8,7 +8,7 @@
     <div class=row>
         <div class="list-group col-md-4">
             <h4>検索条件を入力してください</h4>
-            <form action="{{ url('/users')}}" method="get">
+            <form action="{{ url('/users')}}" method="get" class="mb-2">
               {{ csrf_field()}}
               {{method_field('get')}}
                 <div class="form-group">
@@ -19,6 +19,13 @@
                 <button type="submit" class="btn btn-primary col-md-4">検索</button>
                 <!--<div class="mt-3"><h6>業者表示数：{{count($users)}}件</h6></div>-->
             </form>
+            
+                <div id="map" style="height:500px">
+	            </div>
+	            <script src="{{ asset('/js/result.js') }}"></script>
+	            <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&callback=initMap" async defer></script>
+	            
+
             
         </div>
         @if(session('flash_message'))
