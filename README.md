@@ -9,6 +9,7 @@
 - AWS:EC2(デプロイ先)・Route 53(ドメイン設定)・S3(ファイルストレージ) ・ELB(常時SSL化)・RDS
 - MySQL(8.0.20)・PostgreSQL(Heroku版)
 - PHPUnit(9.5.1)
+- GoogleMapsAPI
 - JavaScriptライブラリflatpickr(期限日のカレンダー機能)
 <!--- Ajax(チャット画面)-->
 
@@ -19,6 +20,7 @@
 - 画像の説明文書の編集機能
 - 画像ごとにタスクの表示・登録・編集・削除機能あり
 - メンバー（下請業者）登録・検索・編集・削除機能
+- GoogleMapの表示
 - チャット画面
 - GitHubにpushすると自動でHerokuにデプロイできるようにした(CDパイプライン)
 
