@@ -8,7 +8,7 @@
     <div class=row>
         <div class="list-group col-md-4">
             <h4>検索条件を入力してください</h4>
-            <form action="{{ url('/users')}}" method="get" class="mb-2">
+            <form action="{{ url('/users')}}" method="get" class="mb-1">
               {{ csrf_field()}}
               {{method_field('get')}}
                 <div class="form-group">
