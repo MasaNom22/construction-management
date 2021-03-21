@@ -24,3 +24,6 @@
 
 ## インフラ構成図
 https://gyazo.com/84e5268e673ef7b042efa7393293599b
+
+## ER図
+https://gyazo.com/175f17625537ca813c9cd57f7111501c
