@@ -20,13 +20,13 @@ class TasksController extends Controller
     public function index($id)
     {
         // 認証済みユーザを取得
-        $user = \Auth::user();
+        $user = \Auth::user()->load('uploadimages');
 		//アップロードした画像を取得
 		$image = $user->uploadimages()->get();
          //アップロードした画像を取得
 // 		$image = UploadImage::all();
 		
-		// 選ばれた画像のを取得する
+		// 選ばれた画像を取得する
         $current_image = UploadImage::find($id);
         
         // 関係するモデルの件数をロード

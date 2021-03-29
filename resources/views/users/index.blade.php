@@ -20,7 +20,7 @@
                 <!--<div class="mt-3"><h6>業者表示数：{{count($users)}}件</h6></div>-->
             </form>
             
-                <div id="map" style="height:500px">
+                <div id="map" style="height:450px">
 	            </div>
 	            <script src="{{ asset('/js/result.js') }}"></script>
 	            <script src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google-map.apikey') }}&callback=initMap" async defer></script>
