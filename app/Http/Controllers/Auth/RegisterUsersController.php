@@ -72,19 +72,18 @@ class RegisterUsersController extends Controller
         ]);
     }
     
-        public function showRegistrationForm2()
+    public function showRegistrationForm2()
     {
         return view('auth.register2');
     }
     
     public function register2(Request $request)
-        {
-            $this->validator($request->all())->validate();
+    {
+        $this->validator($request->all())->validate();
     
-            event(new Registered($user = $this->create($request->all())));
+        event(new Registered($user = $this->create($request->all())));
     
-            // session()->flash('flashmessage', '登録が完了しました');
-            return redirect("/list");
-        }
-    
+        // session()->flash('flashmessage', '登録が完了しました');
+        return redirect("/list");
+    }
 }
