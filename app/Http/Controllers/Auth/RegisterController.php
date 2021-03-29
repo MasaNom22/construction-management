@@ -71,6 +71,4 @@ class RegisterController extends Controller
             'role' => 'admin',
         ]);
     }
-    
-    
 }

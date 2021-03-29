@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Task; 
+use App\Task;
 
 use App\Tag;
 
@@ -21,12 +21,12 @@ class TasksController extends Controller
     {
         // 認証済みユーザを取得
         $user = \Auth::user()->load('uploadimages');
-		//アップロードした画像を取得
-		$image = $user->uploadimages()->get();
-         //アップロードした画像を取得
-// 		$image = UploadImage::all();
-		
-		// 選ばれた画像を取得する
+        //アップロードした画像を取得
+        $image = $user->uploadimages()->get();
+        //アップロードした画像を取得
+        // 		$image = UploadImage::all();
+        
+        // 選ばれた画像を取得する
         $current_image = UploadImage::find($id);
         
         // 関係するモデルの件数をロード
@@ -58,16 +58,16 @@ class TasksController extends Controller
         preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
         $tags = [];
         // $matchの中でも#が付いていない方を使用する(配列番号で言うと1)
-        foreach($match[1] as $tag) {
-           // firstOrCreateで重複を防ぎながらタグを作成している。
-           $record = Tag::firstOrCreate(['name' => $tag]);
-           array_push($tags, $record);
+        foreach ($match[1] as $tag) {
+            // firstOrCreateで重複を防ぎながらタグを作成している。
+            $record = Tag::firstOrCreate(['name' => $tag]);
+            array_push($tags, $record);
         }
 
         $tags_id = [];
-        foreach($tags as $tag) {
-           array_push($tags_id, $tag->id);
-       }
+        foreach ($tags as $tag) {
+            array_push($tags_id, $tag->id);
+        }
         
         
         $current_image->tasks()->save($task);
@@ -97,7 +97,7 @@ class TasksController extends Controller
         ]);
     }
     
-    public function edit($id,$task_id, EditTasks $request)
+    public function edit($id, $task_id, EditTasks $request)
     {
         // タスクのIDを取得
         $task = Task::find($task_id);
@@ -113,19 +113,20 @@ class TasksController extends Controller
     public function statusedit($id)
     {
         //画像ごとのタスクを一括更新
-        Task::where('upload_image_id',$id)->update(['status' => '3']);
+        Task::where('upload_image_id', $id)->update(['status' => '3']);
         //タスク一覧画面へリダイレクト
         return redirect()->route('tasks.index', [
             'id' => $id,
         ]);
     }
     
-    public function destroy($id,$task_id){
-		$deletetask = Task::find($task_id);
-		$redirect_task = Task::find($task_id);
-		$deletetask->delete();
-		return redirect()->route('tasks.index', [
+    public function destroy($id, $task_id)
+    {
+        $deletetask = Task::find($task_id);
+        $redirect_task = Task::find($task_id);
+        $deletetask->delete();
+        return redirect()->route('tasks.index', [
             'id' => $redirect_task->upload_image_id,
         ]);
-	}
+    }
 }
