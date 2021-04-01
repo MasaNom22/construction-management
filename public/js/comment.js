@@ -27,9 +27,12 @@ function get_data() {
         $("#comment-data").append(html);
     }
 },
-        error: () => {
-            alert("ajax Error");
-        }
+        error : function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log("ajax通信に失敗しました");
+        console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+        console.log("textStatus     : " + textStatus);
+        console.log("errorThrown    : " + errorThrown.message);
+    },
     });
 
     setTimeout("get_data()", 5000);
