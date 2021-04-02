@@ -49,8 +49,9 @@ class ChatsController extends Controller
         return response()->json($json);
     }
     
-    public function destroy(){
-		Comment::query()->delete();
-		return redirect()->route('chats.index');
-	}
+    public function destroy()
+    {
+        Comment::query()->delete();
+        return redirect()->route('chats.index');
+    }
 }
