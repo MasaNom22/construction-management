@@ -6,8 +6,8 @@
 ## 使用技術
 - php(7.3.24)
 - Laravel Framework(6.20.9)
-- AWS:EC2(デプロイ先)・Route 53(ドメイン設定)・S3(ファイルストレージ) ・ELB(常時SSL化)・RDS
-- MySQL(8.0.20)・PostgreSQL(Heroku版)
+- AWS:EC2(デプロイ先)・Route 53・S3・ELB・RDS・CloudFront
+- MySQL(8.0.20)
 - PHPUnit(9.5.1)
 - GoogleMapsAPI
 - JavaScriptライブラリflatpickr(期限日のカレンダー機能)
