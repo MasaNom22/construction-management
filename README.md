@@ -22,7 +22,7 @@
 - メンバー（下請業者）登録・検索・編集・削除機能
 - GoogleMapの表示
 - チャット画面
-- GitHubにpushすると自動でHerokuにデプロイできるようにした(CDパイプライン)
+<!--- GitHubにpushすると自動でHerokuにデプロイできるようにした(CDパイプライン)-->
 
 ## インフラ構成図
 https://gyazo.com/84e5268e673ef7b042efa7393293599b
