@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\User; 
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -27,6 +27,7 @@ class UserControllerTest extends TestCase
         ->get(route('users.index'));
 
         $response->assertStatus(200)
-            ->assertViewIs('users.index');
+            ->assertViewIs('users.index')
+            ->assertSee('下請業者一覧');
     }
 }
