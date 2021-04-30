@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\User; 
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -17,7 +17,8 @@ class ImageTest extends TestCase
         $response = $this->get(route('signup.get'));
 
         $response->assertStatus(200)
-            ->assertViewIs('auth.register');
+            ->assertViewIs('auth.register')
+            ->assertSee('新規登録');
     }
     /** @test */
     public function login()
@@ -25,7 +26,8 @@ class ImageTest extends TestCase
         $response = $this->get(route('login'));
 
         $response->assertStatus(200)
-            ->assertViewIs('auth.login');
+            ->assertViewIs('auth.login')
+            ->assertSee('ログイン');
     }
     
     // 未ログイン時
@@ -45,8 +47,7 @@ class ImageTest extends TestCase
         ->get(route('signup.get2'));
 
         $response->assertStatus(200)
-            ->assertViewIs('auth.register2');
+            ->assertViewIs('auth.register2')
+            ->assertSee('業者新規登録');
     }
-    
 }
-

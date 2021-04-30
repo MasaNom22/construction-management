@@ -16,7 +16,7 @@ class ChatControllerTest extends TestCase
      *
      * @return void
      */
-     // 未ログイン時
+    // 未ログイン時
     public function testGuestCreate()
     {
         $response = $this->get(route('chats.index'));
@@ -33,7 +33,8 @@ class ChatControllerTest extends TestCase
         ->get('/chats');
 
         $response->assertStatus(200)
-        ->assertViewIs('chats.index');
+        ->assertViewIs('chats.index')
+        ->assertSee('コメント');
     }
     
     // use RefreshDatabase;
