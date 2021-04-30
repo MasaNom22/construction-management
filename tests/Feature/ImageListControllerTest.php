@@ -2,7 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\User; 
+use App\User;
+use App\UploadImage;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -25,7 +26,6 @@ class ImageListController extends TestCase
         
         $response = $this->actingAs($user)
         ->get('/list');
-        //$response = $this->get('/list');
 
         $response->assertStatus(200)
             ->assertViewIs('image_list');
@@ -48,6 +48,7 @@ class ImageListController extends TestCase
         ->get(route('upload_form'));
 
         $response->assertStatus(200)
-            ->assertViewIs('upload_form');
+            ->assertViewIs('upload_form')
+            ->assertSee('現場画像登録画面');
     }
 }
