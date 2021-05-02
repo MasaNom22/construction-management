@@ -52,4 +52,33 @@ class UsersController extends Controller
           'id' => $user->id,
       ]);
     }
+    
+    public function download_csv(Request $request)
+    {
+        return response()->streamDownload(
+            function () {
+                // 出力バッファをopen
+                $stream = fopen('php://output', 'w');
+                // 文字コードをShift-JISに変換
+                stream_filter_prepend($stream, 'convert.iconv.utf-8/cp932//TRANSLIT');
+                // ヘッダー
+                fputcsv($stream, [
+                    'name',
+                    'email',
+                ]);
+                // データ
+                foreach (User::where('role', 'member')->cursor() as $user) {
+                    fputcsv($stream, [
+                        $user->name,
+                        $user->email,
+                    ]);
+                }
+                fclose($stream);
+            },
+            '下請業者一覧.csv',
+            [
+                'Content-Type' => 'application/octet-stream',
+            ]
+        );
+    }
 }
