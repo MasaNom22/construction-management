@@ -10,8 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-//csvDownload
-Route::get('users/download_csv', 'UsersController@download_csv')->name('users.CsvDownload');
 
 //新規登録(管理者)
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
@@ -65,6 +63,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     //ユーザー一覧と検索画面
     Route::get('/users', 'UsersController@index')->name("users.index");
+    //csvDownload
+    Route::get('users/download_csv', 'UsersController@download_csv')->name('users.CsvDownload');
     //ユーザー編集
     Route::get('/users/{id}/edit', 'UsersController@showEditForm')->name('users.edit');
     Route::post('/users/{id}/edit', 'UsersController@edit');
