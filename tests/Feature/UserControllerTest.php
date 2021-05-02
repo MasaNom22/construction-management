@@ -30,4 +30,11 @@ class UserControllerTest extends TestCase
             ->assertViewIs('users.index')
             ->assertSee('下請業者一覧');
     }
+    
+    public function testGuestCsvdownload()
+    {
+        $response = $this->get(route('users.CsvDownload'));
+
+        $response->assertRedirect(route('login'));
+    }
 }
