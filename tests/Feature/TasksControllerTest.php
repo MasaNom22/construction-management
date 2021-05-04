@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 class TasksControllerTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
     
     public function testGuestTasksIndex()
     {
