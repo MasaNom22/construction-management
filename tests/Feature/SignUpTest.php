@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class ImageTest extends TestCase
 {
+    use RefreshDatabase;
     
     /** @test */
     public function signup()
@@ -38,7 +39,6 @@ class ImageTest extends TestCase
         $response->assertRedirect(route('login'));
     }
     //ログイン時
-    use DatabaseTransactions;
     public function testAuthSignUpUsers()
     {
         $user = factory(User::class)->create();
