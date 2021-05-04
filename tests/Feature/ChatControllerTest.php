@@ -11,6 +11,7 @@ use Tests\TestCase;
 
 class ChatControllerTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -24,7 +25,7 @@ class ChatControllerTest extends TestCase
         $response->assertRedirect(route('login'));
     }
     //ログイン時
-    use DatabaseTransactions;
+    
     public function testExample()
     {
         $user = factory(User::class)->create();

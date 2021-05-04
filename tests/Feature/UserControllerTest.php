@@ -10,6 +10,7 @@ use Tests\TestCase;
 
 class UserControllerTest extends TestCase
 {
+    use RefreshDatabase;
     // 未ログイン時
     public function testGuestIndex()
     {
@@ -18,7 +19,7 @@ class UserControllerTest extends TestCase
         $response->assertRedirect(route('login'));
     }
     //ログイン時
-    use DatabaseTransactions;
+    
     public function testAuthIndex()
     {
         $user = factory(User::class)->create();

@@ -11,6 +11,7 @@ use Tests\TestCase;
 
 class ImageListController extends TestCase
 {
+    use RefreshDatabase;
     // 未ログイン時
     public function testGuestCreate()
     {
@@ -19,7 +20,7 @@ class ImageListController extends TestCase
         $response->assertRedirect(route('login'));
     }
     //ログイン時
-    use DatabaseTransactions;
+    
     public function testExample()
     {
         $user = factory(User::class)->create();
@@ -39,7 +40,7 @@ class ImageListController extends TestCase
         $response->assertRedirect(route('login'));
     }
     //ログイン時
-    use DatabaseTransactions;
+    
     public function testAuthUpload()
     {
         $user = factory(User::class)->create();
