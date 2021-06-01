@@ -2,21 +2,21 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 // この行を追加
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
     protected $fillable = ['title', 'content', 'due_day', 'status'];
-     /**
+    /**
      * 状態定義
      */
     const STATUS = [
-        1 => [ 'label' => '未着手' ],
-        2 => [ 'label' => '着手中' ],
-        3 => [ 'label' => '完了' ],
+        1 => ['label' => '未着手'],
+        2 => ['label' => '着手中'],
+        3 => ['label' => '完了'],
     ];
 
     /**
@@ -35,7 +35,7 @@ class Task extends Model
 
         return self::STATUS[$status]['label'];
     }
-    
+
     /**
      * 整形した期限日
      * @return string
@@ -48,6 +48,6 @@ class Task extends Model
     //Tagと多対多の関係
     public function tags()
     {
-        return $this->belongsToMany('App\Tag', 'tasks_tags'); 
+        return $this->belongsToMany('App\Tag', 'tasks_tags');
     }
 }

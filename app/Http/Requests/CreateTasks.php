@@ -23,19 +23,19 @@ class CreateTasks extends FormRequest
      */
     public function rules()
     {
-       return [
+        return [
             'title' => 'required|max:255',
             'content' => 'required|max:255',
             // 'tags' => 'required|max:255',
             'due_day' => 'required|date|after_or_equal:today',
         ];
     }
-    
+
     public function attributes()
     {
         return [
             'title' => 'タイトル',
-            'content' => '中身',
+            'content' => '内容',
             'tags' => 'タグ',
             'due_day' => '期限日',
         ];

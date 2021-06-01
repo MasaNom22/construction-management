@@ -10,6 +10,6 @@ class Tag extends Model
     //Taskと多対多の関係
     public function tasks()
     {
-        return $this->belongsToMany('App\Task', 'tasks_tags'); 
+        return $this->belongsToMany('App\Task', 'tasks_tags');
     }
 }

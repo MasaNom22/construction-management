@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class UploadImage extends Model
 {
 
@@ -14,20 +13,20 @@ class UploadImage extends Model
     protected $fillable = [
         'file_name', 'file_path', 'title', 'content', 'user_id',
     ];
-    
+
     public function tasks()
     {
         return $this->hasMany('App\Task');
     }
-    
+
     /**
      * この画像を所有するユーザ。（ Userモデルとの関係を定義）
      */
-     public function user()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
+
     /**
      * このユーザが所有するタスク。（ Taskモデルとの関係を定義）
      */

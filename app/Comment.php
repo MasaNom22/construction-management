@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $fillable = [
-        'user_id', 'name', 'comment'
+        'user_id', 'name', 'comment',
     ];
 
     protected $guarded = [
-        'create_at', 'update_at'
+        'create_at', 'update_at',
     ];
 }

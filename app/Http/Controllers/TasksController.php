@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Task;
-
-use App\Tag;
-
-use App\UploadImage;
-
 use App\Http\Requests\CreateTasks;
-
 use App\Http\Requests\EditTasks;
+use App\Tag;
+use App\Task;
+use App\UploadImage;
 
 class TasksController extends Controller
 {
@@ -24,18 +18,18 @@ class TasksController extends Controller
         //アップロードした画像を取得
         $image = $user->uploadimages()->get();
         //アップロードした画像を取得
-        // 		$image = UploadImage::all();
-        
+        //         $image = UploadImage::all();
+
         // 選ばれた画像を取得する
         $current_image = UploadImage::find($id);
-        
+
         // 関係するモデルの件数をロード
         $current_image->loadRelationshipCounts();
-        
+
         // 選ばれた画像に紐づくタスクを取得する
         // $tasks = Task::where('upload_image_id', $current_folder->id)->get();
         $tasks = $current_image->tasks()->orderBy('due_day', 'asc')->paginate(5);
-        
+
         // タスク一覧ビューでそれを表示
         return view('tasks/index', [
             'images' => $image,
@@ -44,7 +38,7 @@ class TasksController extends Controller
             'picture_id' => $current_image,
         ]);
     }
-    
+
     // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
     public function create($id, CreateTasks $request)
     {
@@ -53,7 +47,7 @@ class TasksController extends Controller
         $task->title = $request->title;
         $task->content = $request->content;
         $task->due_day = $request->due_day;
-    
+
         // preg_match_allを使用して#タグのついた文字列を取得している
         preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->tags, $match);
         $tags = [];
@@ -68,26 +62,25 @@ class TasksController extends Controller
         foreach ($tags as $tag) {
             array_push($tags_id, $tag->id);
         }
-        
-        
+
         $current_image->tasks()->save($task);
-    
+
         $task->tags()->attach($tags_id);
         return redirect()->route('tasks.index', [
             'id' => $current_image->id,
-            ]);
+        ]);
     }
-    
+
     // getでmessages/idにアクセスされた場合の「取得表示処理」
     public function showCreateForm($id)
     {
         $image = UploadImage::find($id);
         return view('tasks.create', [
             'image' => $image,
-            'image_id' => $id
+            'image_id' => $id,
         ]);
     }
-    
+
     public function showEditForm($id, $task_id)
     {
         $task = Task::find($task_id);
@@ -96,7 +89,7 @@ class TasksController extends Controller
             'task' => $task,
         ]);
     }
-    
+
     public function edit($id, $task_id, EditTasks $request)
     {
         // タスクのIDを取得
@@ -104,12 +97,12 @@ class TasksController extends Controller
         //タスクを編集　タスクモデルのfillable
         $task->fill($request->all());
         $task->save();
-    
+
         return redirect()->route('tasks.index', [
             'id' => $task->upload_image_id,
         ]);
     }
-    
+
     public function statusedit($id)
     {
         //画像ごとのタスクを一括更新
@@ -119,7 +112,7 @@ class TasksController extends Controller
             'id' => $id,
         ]);
     }
-    
+
     public function destroy($id, $task_id)
     {
         $deletetask = Task::find($task_id);

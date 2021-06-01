@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\User;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -12,16 +11,16 @@ class UsersController extends Controller
     {
         //名前受け取り
         $keyword = $request->input('name');
-   
+
         $users = User::where('role', 'member')->paginate(5);
         //もし検索欄に名前があったら
         if (!empty($keyword)) {
-            $users= User::where('name', 'like', '%'.$keyword.'%')->where('role', 'member')->paginate(5);
+            $users = User::where('name', 'like', '%' . $keyword . '%')->where('role', 'member')->paginate(5);
         }
-  
+
         return view('users.index', ['users' => $users]);
     }
-  
+
     public function destroy($id, Request $request)
     {
         $deleteuser = User::find($id);
@@ -29,16 +28,16 @@ class UsersController extends Controller
         $users = User::where('role', 'member')->paginate(5);
         return redirect()->route('users.index', ['users' => $users]);
     }
-    
+
     public function showEditForm($id)
     {
         $user = User::find($id);
 
         return view('users/edit', [
-          'user' => $user,
-      ]);
+            'user' => $user,
+        ]);
     }
-    
+
     public function edit($id, Request $request)
     {
         //ユーザーを特定
@@ -47,12 +46,12 @@ class UsersController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
-        
+
         return redirect()->route('users.index', [
-          'id' => $user->id,
-      ]);
+            'id' => $user->id,
+        ]);
     }
-    
+
     public function download_csv(Request $request)
     {
         return response()->streamDownload(

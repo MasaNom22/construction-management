@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Comment;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ChatsController extends Controller
@@ -28,16 +28,16 @@ class ChatsController extends Controller
         $comments = Comment::get();
         return view('chats/index', ['comments' => $comments]);
     }
-    
+
     public function add(Request $request)
     {
         $user = Auth::user();
-        $comment="";
+        $comment = "";
         $comment = $request->input('comment');
         Comment::create([
             'user_id' => $user->id,
             'name' => $user->name,
-            'comment' => $comment
+            'comment' => $comment,
         ]);
         return redirect()->route('chats.index');
     }
@@ -48,7 +48,7 @@ class ChatsController extends Controller
         $json = ["comments" => $comments];
         return response()->json($json);
     }
-    
+
     public function destroy()
     {
         Comment::query()->delete();
