@@ -149,6 +149,7 @@ return [
         'title' => 'タイトル',
         'content' => '内容',
         'image' => '画像',
+        'password' => 'パスワード',
     ],
 
 ];
