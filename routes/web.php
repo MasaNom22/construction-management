@@ -25,8 +25,7 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 //画像表示 トップページ
 Route::get('/', 'ImageListController@show')->name("image_list");
-//ログイン状態で使用可能
-Route::group(['middleware' => 'auth'], function () {
+
     //新規登録(ユーザー)
     Route::get('signup/users', 'Auth\RegisterUsersController@showRegistrationForm2')->name('signup.get2');
     Route::post('signup/users', 'Auth\RegisterUsersController@register2')->name('signup.post2');
@@ -55,9 +54,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('{id}/tasks/{task_id}', 'TasksController@destroy')->name("tasks.destroy");
     });
 
-
-    
-    // Route::get('/home', 'HomeController@index')->name('home');
     //ユーザー一覧と検索画面
     Route::get('/users', 'UsersController@index')->name("users.index");
     //csvDownload
@@ -74,4 +70,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/chats/delete', 'ChatsController@destroy')->name("chats.destroy");
     //チャット一覧画面
     Route::get('/chats', 'ChatsController@index')->name("chats.index");
-});
+
