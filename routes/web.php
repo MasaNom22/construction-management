@@ -23,6 +23,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 // Route::get('/login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 // ゲストユーザーログイン
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+//画像表示 トップページ
+Route::get('/', 'ImageListController@show')->name("image_list");
 //ログイン状態で使用可能
 Route::group(['middleware' => 'auth'], function () {
     //新規登録(ユーザー)
@@ -39,8 +41,6 @@ Route::group(['middleware' => 'auth'], function () {
         //タスク編集
         Route::get('{id}/edit', 'UploadImageController@showEditForm')->name('image.edit');
         Route::post('{id}/edit', 'UploadImageController@edit');
-        //画像表示
-        Route::get('/', 'ImageListController@show')->name("image_list");
         //タスク
         Route::get('{id}/tasks', 'TasksController@index')->name('tasks.index');
         //タスク作成
@@ -56,11 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 
-    //画像表示 トップページ
-    Route::group(['middleware' => 'admin_auth'], function () {
-        Route::get('/', 'ImageListController@show')->name("image_list");
-    });
-    Route::get('/home', 'HomeController@index')->name('home');
+    
+    // Route::get('/home', 'HomeController@index')->name('home');
     //ユーザー一覧と検索画面
     Route::get('/users', 'UsersController@index')->name("users.index");
     //csvDownload

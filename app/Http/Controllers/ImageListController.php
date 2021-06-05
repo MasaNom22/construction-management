@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UploadImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +12,7 @@ class ImageListController extends Controller
     public function show()
     {
         // 認証済みユーザを取得
-        $user = \Auth::user();
+        $user = User::first();
         //アップロードした画像を取得
         $uploads = $user->uploadimages()->orderBy("id", "desc")->get();
         // $uploads = UploadImage::orderBy("id", "desc")->get();
