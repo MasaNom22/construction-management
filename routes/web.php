@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 //新規登録(管理者)
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
@@ -25,15 +25,18 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 //画像表示 トップページ
 Route::get('/', 'ImageListController@show')->name("image_list");
+//画像表示 トップページ
+Route::get('/list', 'ImageListController@show')->name("image_list");
 
-    //新規登録(ユーザー)
-    Route::get('signup/users', 'Auth\RegisterUsersController@showRegistrationForm2')->name('signup.get2');
-    Route::post('signup/users', 'Auth\RegisterUsersController@register2')->name('signup.post2');
-    //画像投稿画面
-    Route::get('/form', 'UploadImageController@show')->name("upload_form");
-    //画像アップロード
-    Route::post('/upload', 'UploadImageController@upload')->name("upload_image");
-    
+//新規登録(ユーザー)
+Route::get('signup/users', 'Auth\RegisterUsersController@showRegistrationForm2')->name('signup.get2');
+Route::post('signup/users', 'Auth\RegisterUsersController@register2')->name('signup.post2');
+//画像投稿画面
+Route::get('/form', 'UploadImageController@show')->name("upload_form");
+//画像アップロード
+Route::post('/upload', 'UploadImageController@upload')->name("upload_image");
+//ログイン状態で使用可能
+Route::group(['middleware' => 'auth'], function () {
     Route::prefix('list')->group(function () {
         //画像削除
         Route::delete('{id}', 'ImageListController@destroy')->name("delete_image");
@@ -53,21 +56,22 @@ Route::get('/', 'ImageListController@show')->name("image_list");
         //タスク削除
         Route::delete('{id}/tasks/{task_id}', 'TasksController@destroy')->name("tasks.destroy");
     });
-
-    //ユーザー一覧と検索画面
-    Route::get('/users', 'UsersController@index')->name("users.index");
-    //csvDownload
-    Route::get('users/download_csv', 'UsersController@download_csv')->name('users.CsvDownload');
-    //ユーザー編集
-    Route::get('/users/{id}/edit', 'UsersController@showEditForm')->name('users.edit');
-    Route::post('/users/{id}/edit', 'UsersController@edit');
-    //ユーザー削除
-    Route::delete('/users/{user_id}', 'UsersController@destroy')->name("users.destroy");
+    //チャット一覧画面
+Route::get('/chats', 'ChatsController@index')->name("chats.index");
     //チャットコメント投稿
     Route::post('/chat/add', 'ChatsController@add')->name("chats.post");
     Route::get('/result/ajax', 'ChatsController@getData');
-    //ユーザー削除
-    Route::delete('/chats/delete', 'ChatsController@destroy')->name("chats.destroy");
-    //チャット一覧画面
-    Route::get('/chats', 'ChatsController@index')->name("chats.index");
+});
+//ユーザー一覧と検索画面
+Route::get('/users', 'UsersController@index')->name("users.index");
+//csvDownload
+Route::get('users/download_csv', 'UsersController@download_csv')->name('users.CsvDownload');
+//ユーザー編集
+Route::get('/users/{id}/edit', 'UsersController@showEditForm')->name('users.edit');
+Route::post('/users/{id}/edit', 'UsersController@edit');
+//ユーザー削除
+Route::delete('/users/{user_id}', 'UsersController@destroy')->name("users.destroy");
+
+//ユーザー削除
+Route::delete('/chats/delete', 'ChatsController@destroy')->name("chats.destroy");
 
