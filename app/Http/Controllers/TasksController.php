@@ -7,18 +7,19 @@ use App\Http\Requests\EditTasks;
 use App\Tag;
 use App\Task;
 use App\UploadImage;
+use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
     // getでtasks/にアクセスされた場合の「一覧表示処理」
-    public function index($id)
+    public function index($id, Request $request)
     {
+        //検索されたタスクのタイトル
+        $keyword = $request->input('title');
         // 認証済みユーザを取得
         $user = \Auth::user()->load('uploadimages');
         //アップロードした画像を取得
         $image = $user->uploadimages()->get();
-        //アップロードした画像を取得
-        //         $image = UploadImage::all();
 
         // 選ばれた画像を取得する
         $current_image = UploadImage::find($id);
@@ -26,11 +27,12 @@ class TasksController extends Controller
         // 関係するモデルの件数をロード
         $current_image->loadRelationshipCounts();
 
-        // 選ばれた画像に紐づくタスクを取得する
-        // $tasks = Task::where('upload_image_id', $current_folder->id)->get();
         $tasks = $current_image->tasks()->orderBy('due_day', 'asc')->paginate(5);
+        //もし検索欄に名前があったら
+        if (!empty($keyword)) {
+            $tasks = $current_image->tasks()->where('title', 'like', '%' . $keyword . '%')->orderBy('due_day', 'asc')->paginate(5);
+        }
 
-        // タスク一覧ビューでそれを表示
         return view('tasks/index', [
             'images' => $image,
             'current_image_id' => $current_image->id,
