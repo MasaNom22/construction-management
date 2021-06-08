@@ -14,8 +14,10 @@ class TasksController extends Controller
     // getでtasks/にアクセスされた場合の「一覧表示処理」
     public function index($id, Request $request)
     {
-        //検索されたタスクのタイトル
+        //検索されたタスクのタイトル・ステータス
         $keyword = $request->input('title');
+        $status = $request->input('status');
+        print_r($status);
         // 認証済みユーザを取得
         $user = \Auth::user()->load('uploadimages');
         //アップロードした画像を取得
@@ -32,16 +34,19 @@ class TasksController extends Controller
         if (!empty($keyword)) {
             $tasks = $current_image->tasks()->where('title', 'like', '%' . $keyword . '%')->orderBy('due_day', 'asc')->paginate(5);
         }
+        if (!empty($status)) {
+            $tasks = $current_image->tasks()->where('status', $status)->orderBy('due_day', 'asc')->paginate(5);
+        }
 
         return view('tasks/index', [
             'images' => $image,
             'current_image_id' => $current_image->id,
             'tasks' => $tasks,
             'picture_id' => $current_image,
+            'status' => $status,
         ]);
     }
 
-    // getでmessages/createにアクセスされた場合の「新規登録画面表示処理」
     public function create($id, CreateTasks $request)
     {
         $current_image = UploadImage::find($id);
@@ -73,7 +78,6 @@ class TasksController extends Controller
         ]);
     }
 
-    // getでmessages/idにアクセスされた場合の「取得表示処理」
     public function showCreateForm($id)
     {
         $image = UploadImage::find($id);
@@ -96,7 +100,7 @@ class TasksController extends Controller
     {
         // タスクのIDを取得
         $task = Task::find($task_id);
-        //タスクを編集　タスクモデルのfillable
+        //タスクを編集 タスクモデルのfillable
         $task->fill($request->all());
         $task->save();
 
@@ -107,9 +111,9 @@ class TasksController extends Controller
 
     public function statusedit($id)
     {
-        //画像ごとのタスクを一括更新
+        //現場ごとのタスクを一括更新
         Task::where('upload_image_id', $id)->update(['status' => '3']);
-        //タスク一覧画面へリダイレクト
+
         return redirect()->route('tasks.index', [
             'id' => $id,
         ]);

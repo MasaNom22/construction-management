@@ -27,10 +27,15 @@
         <div class="form-group">
           <label>タスク</label>
 
-          <input type="text" class="form-control" placeholder="検索したいタスクのタイトルを入力して下さい" name="title" value="">
+          <input type="text" class="form-control" placeholder="検索したいタスクのタイトルを入力して下さい" name="title"
+            value="{{ old('title') }}">
+          <div class="form-group">
+            {!! Form::label('status', 'ステータス') !!}
+            {!! Form::select('status', [null => 'すべて', '1' => '未着手', '2' => '着手中', '3' => '完了'], $status, ['class' =>
+            'form-control custom-select']) !!}
+          </div>
+          <button type="submit" class="btn btn-primary col-md-4">検索</button>
         </div>
-        <button type="submit" class="btn btn-primary col-md-4">検索</button>
-
     </div>
 
 
