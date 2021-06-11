@@ -20,7 +20,7 @@ class TasksController extends Controller
         print_r($status);
         // 認証済みユーザを取得
         $user = \Auth::user()->load('uploadimages');
-        //アップロードした画像を取得
+        //アップロードした画像(現場の画像)を取得
         $image = $user->uploadimages()->get();
 
         // 選ばれた画像を取得する
@@ -29,13 +29,13 @@ class TasksController extends Controller
         // 関係するモデルの件数をロード
         $current_image->loadRelationshipCounts();
 
-        $tasks = $current_image->tasks()->orderBy('due_day', 'asc')->paginate(5);
+        $tasks = Task::TaskShow($id)->orderBy('due_day', 'asc')->paginate(5);
         //もし検索欄に名前があったら
         if (!empty($keyword)) {
-            $tasks = $current_image->tasks()->where('title', 'like', '%' . $keyword . '%')->orderBy('due_day', 'asc')->paginate(5);
+            $tasks = Task::TaskShow($id)->SearchKeyword($keyword)->orderBy('due_day', 'asc')->paginate(5);
         }
         if (!empty($status)) {
-            $tasks = $current_image->tasks()->where('status', $status)->orderBy('due_day', 'asc')->paginate(5);
+            $tasks = Task::TaskShow($id)->SearchStatus($status)->orderBy('due_day', 'asc')->paginate(5);
         }
 
         return view('tasks/index', [

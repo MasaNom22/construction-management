@@ -4,7 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 
-// この行を追加
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
@@ -49,5 +49,16 @@ class Task extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Tag', 'tasks_tags');
+    }
+
+    public function scopeTaskShow($query, $id) {
+        return $query->where('upload_image_id', $id);
+    }
+
+    public function scopeSearchKeyword($query, $keyword) {
+        return $query->where('title', 'like', '%' . $keyword . '%');
+    }
+    public function scopeSearchStatus($query, $status) {
+        return $query->where('status', $status);
     }
 }
