@@ -21,7 +21,7 @@
       </a>
       @endforeach
 
-      <form action="{{ route('tasks.index', ['id' => $picture_id]) }}" method="get" class="mt-2">
+      <form action="{{ route('tasks.search', ['id' => $picture_id]) }}" method="get" class="mt-2">
         {{ csrf_field()}}
         {{method_field('get')}}
         <div class="form-group">

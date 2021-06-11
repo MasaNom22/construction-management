@@ -14,10 +14,7 @@ class TasksController extends Controller
     // getでtasks/にアクセスされた場合の「一覧表示処理」
     public function index($id, Request $request)
     {
-        //検索されたタスクのタイトル・ステータス
-        $keyword = $request->input('title');
         $status = $request->input('status');
-        print_r($status);
         // 認証済みユーザを取得
         $user = \Auth::user()->load('uploadimages');
         //アップロードした画像(現場の画像)を取得
@@ -30,13 +27,6 @@ class TasksController extends Controller
         $current_image->loadRelationshipCounts();
 
         $tasks = Task::TaskShow($id)->orderBy('due_day', 'asc')->paginate(5);
-        //もし検索欄に名前があったら
-        if (!empty($keyword)) {
-            $tasks = Task::TaskShow($id)->SearchKeyword($keyword)->orderBy('due_day', 'asc')->paginate(5);
-        }
-        if (!empty($status)) {
-            $tasks = Task::TaskShow($id)->SearchStatus($status)->orderBy('due_day', 'asc')->paginate(5);
-        }
 
         return view('tasks/index', [
             'images' => $image,
@@ -126,6 +116,33 @@ class TasksController extends Controller
         $deletetask->delete();
         return redirect()->route('tasks.index', [
             'id' => $redirect_task->upload_image_id,
+        ]);
+    }
+
+    public function search($id, Request $request)
+    {
+        //検索されたタスクのタイトル・ステータス
+        $keyword = $request->input('title');
+        $status = $request->input('status');
+        // 認証済みユーザを取得
+        $user = \Auth::user()->load('uploadimages');
+        //アップロードした画像(現場の画像)を取得
+        $image = $user->uploadimages()->get();
+
+        // 選ばれた画像を取得する
+        $current_image = UploadImage::find($id);
+
+        // 関係するモデルの件数をロード
+        $current_image->loadRelationshipCounts();
+
+        $tasks = Task::TaskShow($id)->QuerySearch($keyword, $status)->orderBy('due_day', 'asc')->paginate(5);
+
+        return view('tasks/index', [
+            'images' => $image,
+            'current_image_id' => $current_image->id,
+            'tasks' => $tasks,
+            'picture_id' => $current_image,
+            'status' => $status,
         ]);
     }
 }

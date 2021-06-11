@@ -43,8 +43,10 @@ Route::group(['middleware' => 'auth'], function () {
         //タスク編集
         Route::get('{id}/edit', 'UploadImageController@showEditForm')->name('image.edit');
         Route::post('{id}/edit', 'UploadImageController@edit');
-        //タスク
+        //タスク一覧表示
         Route::get('{id}/tasks', 'TasksController@index')->name('tasks.index');
+        //タスク検索
+        Route::get('{id}/tasks/search', 'TasksController@search')->name('tasks.search');
         //タスク作成
         Route::get('{id}/tasks/create', 'TasksController@showCreateForm')->name('tasks.create');
         Route::post('{id}/tasks/create', 'TasksController@create');
@@ -57,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('{id}/tasks/{task_id}', 'TasksController@destroy')->name("tasks.destroy");
     });
     //チャット一覧画面
-Route::get('/chats', 'ChatsController@index')->name("chats.index");
+    Route::get('/chats', 'ChatsController@index')->name("chats.index");
     //チャットコメント投稿
     Route::post('/chat/add', 'ChatsController@add')->name("chats.post");
     Route::get('/result/ajax', 'ChatsController@getData');
@@ -74,4 +76,3 @@ Route::delete('/users/{user_id}', 'UsersController@destroy')->name("users.destro
 
 //ユーザー削除
 Route::delete('/chats/delete', 'ChatsController@destroy')->name("chats.destroy");
-

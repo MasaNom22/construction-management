@@ -3,8 +3,6 @@
 namespace App;
 
 use Carbon\Carbon;
-
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
@@ -51,14 +49,21 @@ class Task extends Model
         return $this->belongsToMany('App\Tag', 'tasks_tags');
     }
 
-    public function scopeTaskShow($query, $id) {
+    public function scopeTaskShow($query, $id)
+    {
         return $query->where('upload_image_id', $id);
     }
 
-    public function scopeSearchKeyword($query, $keyword) {
-        return $query->where('title', 'like', '%' . $keyword . '%');
+    public function scopeQuerySearch($query, $keyword, $status)
+    {
+        if (!empty($keyword)) {
+            $query->where('title', 'like', '%' . $keyword . '%');
+        }
+        if (!empty($status)) {
+            $query->where('status', $status);
+        }
+        return $query;
+
     }
-    public function scopeSearchStatus($query, $status) {
-        return $query->where('status', $status);
-    }
+
 }
