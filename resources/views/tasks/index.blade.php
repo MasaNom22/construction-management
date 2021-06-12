@@ -21,7 +21,7 @@
       </a>
       @endforeach
 
-      <form action="{{ route('tasks.search', ['id' => $picture_id]) }}" method="get" class="mt-2">
+      <form action="{{ route('tasks.search', ['id' => $picture_id->id]) }}" method="get" class="mt-2">
         {{ csrf_field()}}
         {{method_field('get')}}
         <div class="form-group">
@@ -36,6 +36,7 @@
           </div>
           <button type="submit" class="btn btn-primary col-md-4">検索</button>
         </div>
+      </form>
     </div>
 
 
@@ -47,7 +48,7 @@
 
         <div class="panel-body">
           @if($picture_id->tasks_count >0)
-          {!! Form::model($picture_id, ['route' => ['tasks.statusedit', 'id' => $picture_id], 'method' => 'put']) !!}
+          {!! Form::model($picture_id, ['route' => ['tasks.statusedit', $picture_id->id], 'method' => 'put']) !!}
           {!! Form::submit('タスク一括完了', ['class' => 'btn btn-success btn-sm']) !!}
           {!! Form::close() !!}
           @else
