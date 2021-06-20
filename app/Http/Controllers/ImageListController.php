@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\UploadImage;
+use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,26 +11,26 @@ class ImageListController extends Controller
 {
     public function show()
     {
-        // 認証済みユーザを取得
+
         $user = User::first();
-        //アップロードした画像を取得
-        $uploads = $user->uploadimages()->orderBy("id", "desc")->get();
-        // $uploads = UploadImage::orderBy("id", "desc")->get();
+
+        $images = $user->uploadimages()->orderBy("id", "desc")->get();
+
         return view("image_list", [
-            "images" => $uploads,
+            "images" => $images,
         ]);
     }
 
     public function destroy($id)
     {
-        $deletePictures = UploadImage::find($id);
-        $deleteName = $deletePictures->file_path;
+        $delete_picture = UploadImage::find($id);
+        $delete_name = $delete_picture->file_path;
 
         DB::beginTransaction();
-        $deletePictures->delete();
+        $delete_picture->delete();
         try {
-            Storage::delete('public/' . $deleteName);
-            // Storage::disk('s3')->delete($deleteName);
+            Storage::delete('public/' . $delete_name);
+
             DB::commit();
         } catch (Exception $exception) {
             DB::rollBack();

@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
-    // getでtasks/にアクセスされた場合の「一覧表示処理」
+    
     public function index($id, Request $request)
     {
         $status = $request->input('status');
-        // 認証済みユーザを取得
+        
         $user = \Auth::user()->load('uploadimages');
         //アップロードした画像(現場の画像)を取得
         $image = $user->uploadimages()->get();
@@ -127,7 +127,7 @@ class TasksController extends Controller
         // 認証済みユーザを取得
         $user = \Auth::user()->load('uploadimages');
         //アップロードした画像(現場の画像)を取得
-        $image = $user->uploadimages()->get();
+        $images = $user->uploadimages()->get();
 
         // 選ばれた画像を取得する
         $current_image = UploadImage::find($id);
@@ -138,7 +138,7 @@ class TasksController extends Controller
         $tasks = Task::TaskShow($id)->QuerySearch($keyword, $status)->orderBy('due_day', 'asc')->paginate(5);
 
         return view('tasks/index', [
-            'images' => $image,
+            'images' => $images,
             'current_image_id' => $current_image->id,
             'tasks' => $tasks,
             'picture_id' => $current_image,

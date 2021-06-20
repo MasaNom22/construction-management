@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -13,7 +14,7 @@ class UsersController extends Controller
         $keyword = $request->input('name');
 
         $users = User::where('role', 'member')->paginate(5);
-        //もし検索欄に名前があったら
+        //もし検索欄が空でない時
         if (!empty($keyword)) {
             $users = User::where('name', 'like', '%' . $keyword . '%')->where('role', 'member')->paginate(5);
         }
@@ -23,9 +24,15 @@ class UsersController extends Controller
 
     public function destroy($id, Request $request)
     {
-        $deleteuser = User::find($id);
-        $deleteuser->delete();
-        $users = User::where('role', 'member')->paginate(5);
+        $delete_user = User::find($id);
+        DB::beginTransaction();
+        $delete_user->delete();
+        try {
+            $users = User::where('role', 'member')->paginate(5);
+            DB::commit();
+        } catch (Exception $exception) {
+            DB::rollBack();
+        }
         return redirect()->route('users.index', ['users' => $users]);
     }
 
