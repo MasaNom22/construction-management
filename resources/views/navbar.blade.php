@@ -14,9 +14,9 @@
                     <li class="nav-item">
                         <span class="nav-link">ようこそ、 {{ Auth::user()->name }}さん</span>
                     </li>
-                    {{-- チャットページへのリンク --}}
+                    {{-- 全体連絡ページへのリンク --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('chats.index') }}"><i class="fas fa-bell mr-1"></i>チャット</a>
+                        <a class="nav-link" href="{{ route('chats.index') }}"><i class="fas fa-bell mr-1"></i>全体連絡</a>
                     </li>
                     {{-- 業者登録ページへのリンク --}}
                     <li class="nav-item">
@@ -26,22 +26,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('upload_form') }}"><i class="fas fa-arrow-alt-circle-down mr-1"></i>現場写真投稿</a>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ '機能一覧' }}</a>
+                        <ul class="dropdown-menu dropdown-menu-right">
                     {{-- 画像一覧ページへのリンク --}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('image_list') }}"><i class="fas fa-book-reader mr-1"></i>画像確認</a>
+                    <li class="dropdown-item">
+                        {!! link_to_route('image_list', '画像確認') !!}
                     </li>
                     
                     {{-- ログアウトへのリンク --}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout.get') }}">ログアウト</a>
+                    <li class="dropdown-item">
+                        {!! link_to_route('logout.get', 'ログアウト') !!}
                     </li>
+                </ul>
+            </li>
                     
                 @else
                     {{-- ゲストログインへのリンク --}}
                     <li class="nav-item">{!! link_to_route('login.guest', 'ゲストログイン', [], ['class' => 'nav-link']) !!}</li>
                     {{-- チャットページへのリンク --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('chats.index') }}"><i class="fas fa-bell mr-1"></i>チャット</a>
+                        <a class="nav-link" href="{{ route('chats.index') }}"><i class="fas fa-bell mr-1"></i>全体連絡</a>
                     </li>
                     {{-- 業者登録ページへのリンク --}}
                     <li class="nav-item">
